@@ -1,7 +1,5 @@
 package modelo;
 
-import java.util.ArrayList;
-
 public class ComarcaPlus extends Tarjeta{
 
 	public ComarcaPlus(String dueño, int numTarjeta) {
@@ -9,20 +7,11 @@ public class ComarcaPlus extends Tarjeta{
 		this.descuento = 2;
 	}
 
-	public int calcularCosto(ArrayList<BebidaRecord> listaBebidas, ArrayList<PlatoRecord> listaPlatos) {
-		int costoFinal, costoBebidas = 0, costoPlatos = 0;
+	public int calcularDescuento(int precioBebidas, int precioPlatos) {
+		int precio = precioBebidas + precioPlatos;
 		
-		for (PlatoRecord platoRecord : listaPlatos) {
-			costoPlatos = costoPlatos + platoRecord.precio();
-		}
-		for (BebidaRecord bebidaRecord : listaBebidas) {
-			costoBebidas = costoBebidas + bebidaRecord.precio();
-		}
+		precio = (int) (precio - (precio * this.descuento/100));
 		
-		costoFinal = costoPlatos + costoBebidas;
-		costoFinal =(int) (costoFinal - (costoFinal * this.descuento/100));
-		
-		return sumarPropina(costoFinal);
+		return precio;
 	}
-
 }

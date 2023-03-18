@@ -30,41 +30,17 @@ public class Concurso {
 	public void eliminarParticipante(Participante unParticipante) {
 		this.listaDeParticipantes.remove(unParticipante);
 	}
-
-	public void sumarPuntosParticipanteInscripcion(Participante unParticipante) {
-		unParticipante.setPuntos(unParticipante.getPuntos() + 10);
-	}
 	
-	//Getters y Setters
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public LocalDate getFechaAperturaInscripcion() {
-		return fechaAperturaInscripcion;
-	}
-
-	public void setFechaAperturaInscripcion(LocalDate fechaAperturaInscripcion) {
-		this.fechaAperturaInscripcion = fechaAperturaInscripcion;
-	}
-
-	public LocalDate getFechaCierreInscripcion() {
-		return fechaCierreInscripcion;
-	}
-
-	public void setFechaCierreInscripcion(LocalDate fechaCierreInscripcion) {
-		this.fechaCierreInscripcion = fechaCierreInscripcion;
-	}
-
-	public ArrayList<Participante> getListaDeParticipantes() {
-		return listaDeParticipantes;
-	}
-
-	public void setListaDeParticipantes(ArrayList<Participante> listaDeParticipantes) {
-		this.listaDeParticipantes = listaDeParticipantes;
+	public boolean verificarInscripcionParticipante(Participante unParticipante) {
+		LocalDate fechaDeHoy = LocalDate.now();
+		
+		if(fechaDeHoy.isBefore(this.fechaAperturaInscripcion) || fechaDeHoy.isAfter(this.fechaCierreInscripcion)) {
+			return false;
+		}else {
+			if(fechaDeHoy.isEqual(this.fechaAperturaInscripcion)) {
+				unParticipante.sumarPuntos(10);
+			}
+			return true;
+		}
 	}
 }
