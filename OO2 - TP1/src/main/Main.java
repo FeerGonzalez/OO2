@@ -5,6 +5,7 @@ import java.time.LocalDate;
 
 import modelo.Concurso;
 import modelo.InformacionEnArchivo;
+import modelo.InformacionEnBD;
 import modelo.Participante;
 
 public class Main {
@@ -17,12 +18,11 @@ public class Main {
 		Concurso concurso4 = new Concurso("Concurso de Inteligencia", LocalDate.now().minusDays(2).toString(), LocalDate.now().plusDays(3).toString()); //Puede inscribirse
 			
 		Participante unParticipante = new Participante("Maximiliano Flores", "max_flores@gmail.com");
-		
-		;
 			
 //		unParticipante.inscribirseAConcurso(unConcurso);
 		try {
-			unParticipante.setGuardarInfo(new InformacionEnArchivo("Inscripturas"));
+//			unParticipante.setGuardarInfo(new InformacionEnArchivo("Inscripturas"));
+			unParticipante.setGuardarInfo(new InformacionEnBD("jdbc:mysql://127.0.0.1/tp2_oo2", "root", ""));
 			unParticipante.inscribirseAConcurso(concurso2);
 			unParticipante.inscribirseAConcurso(concurso4);
 		} catch (IOException e) {

@@ -5,6 +5,7 @@ import java.io.IOException;
 import modelo.Bebida;
 import modelo.ComarcaPlus;
 import modelo.InformacionEnArchivo;
+import modelo.InformacionEnBD;
 import modelo.Mastercard;
 import modelo.Pedido;
 import modelo.Plato;
@@ -29,7 +30,8 @@ public class Main2 {
 		unPedido.agregarPlatoAlPedido(new Plato("Pizza", 380));
 		
 		try {
-			unPedido.setGuardarInfo(new InformacionEnArchivo("Pedidos"));
+//			unPedido.setGuardarInfo(new InformacionEnArchivo("Pedidos"));
+			unPedido.setGuardarInfo(new InformacionEnBD("jdbc:mysql://127.0.0.1/tp2_oo2", "root", ""));
 			unPedido.calcularCostoPedido(tarjetaVisa);
 			unPedido.calcularCostoPedido(tarjetaMastercard);
 			unPedido.calcularCostoPedido(tarjetaComarca);
