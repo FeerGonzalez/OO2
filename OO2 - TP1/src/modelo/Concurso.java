@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Concurso {
+	private static int auxID=1;
+	private final int id;
 	private String nombre;
 	private LocalDate fechaAperturaInscripcion;
 	private LocalDate fechaCierreInscripcion;
@@ -16,11 +18,12 @@ public class Concurso {
 		if(nombre.isEmpty() || fechaApertura.isEmpty() || fechaCierre.isEmpty()) {
 			throw new RuntimeException("Hay campos vacios para crear un concurso\n");
 		}
-		
+		this.id = auxID;
 		this.nombre = nombre;
 		this.fechaAperturaInscripcion = LocalDate.parse(fechaApertura);
 		this.fechaCierreInscripcion = LocalDate.parse(fechaCierre);
 		this.listaDeParticipantes = new ArrayList<>();
+		auxID = auxID + 1;
 	}
 	
 	public void agregarParticipante(Participante unParticipante) {
@@ -42,5 +45,9 @@ public class Concurso {
 			}
 			return true;
 		}
+	}
+
+	public int getId() {
+		return id;
 	}
 }

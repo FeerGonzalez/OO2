@@ -1,17 +1,34 @@
 package modelo;
 
+import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Pedido {
+	private GuardarInfo guardarInfo;
 	private ArrayList<Bebida> listaBebidas;
 	private ArrayList<Plato> listaPlatos;
 	
 	public Pedido() {
+		this.guardarInfo = null;
+		this.listaBebidas = new ArrayList<>();
+		this.listaPlatos = new ArrayList<>();
+	}
+	
+	public Pedido(GuardarInfo info) {
+		this.guardarInfo = info;
 		this.listaBebidas = new ArrayList<>();
 		this.listaPlatos = new ArrayList<>();
 	}
 	
 	public Pedido(ArrayList<Bebida> listaBebidasCompradas, ArrayList<Plato> listaPlatosComprados) {
+		this.guardarInfo = null;
+		this.listaBebidas = listaBebidasCompradas;
+		this.listaPlatos = listaPlatosComprados;
+	}
+	
+	public Pedido(GuardarInfo info, ArrayList<Bebida> listaBebidasCompradas, ArrayList<Plato> listaPlatosComprados) {
+		this.guardarInfo = info;
 		this.listaBebidas = listaBebidasCompradas;
 		this.listaPlatos = listaPlatosComprados;
 	}
@@ -24,7 +41,7 @@ public class Pedido {
 		this.listaPlatos.add(unPlato);
 	}
 	
-	public int calcularCostoPedido(Tarjeta unaTarjeta) {
+	public int calcularCostoPedido(Tarjeta unaTarjeta) throws IOException {
 		int costoPlatos = 0, costoBebidas = 0, costoFinal;
 		
 		for (Bebida bebida : listaBebidas) {
@@ -37,6 +54,9 @@ public class Pedido {
 		costoFinal = unaTarjeta.calcularDescuento(costoBebidas, costoPlatos);
 		
 		costoFinal = sumarPropina(costoFinal);
+		
+		String cadena = LocalDate.now().toString() + " || " + costoFinal;
+		this.guardarInfo.registrarInfo(cadena);
 		
 		return costoFinal;
 	}
@@ -51,5 +71,13 @@ public class Pedido {
 				return (int) (unCosto + (unCosto * 2/100));
 			}
 		}
+	}
+	
+	public GuardarInfo getGuardarInfo() {
+		return guardarInfo;
+	}
+
+	public void setGuardarInfo(GuardarInfo guardarInfo) {
+		this.guardarInfo = guardarInfo;
 	}
 }

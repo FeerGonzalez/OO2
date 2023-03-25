@@ -1,7 +1,10 @@
 package main;
 
+import java.io.IOException;
+
 import modelo.Bebida;
 import modelo.ComarcaPlus;
+import modelo.InformacionEnArchivo;
 import modelo.Mastercard;
 import modelo.Pedido;
 import modelo.Plato;
@@ -25,10 +28,21 @@ public class Main2 {
 		unPedido.agregarPlatoAlPedido(new Plato("Milanesa con papas fritas", 560));
 		unPedido.agregarPlatoAlPedido(new Plato("Pizza", 380));
 		
-		System.out.println(unPedido.calcularCostoPedido(tarjetaVisa));
-		System.out.println(unPedido.calcularCostoPedido(tarjetaMastercard));
-		System.out.println(unPedido.calcularCostoPedido(tarjetaComarca));
-		System.out.println(unPedido.calcularCostoPedido(tarjetaViedma));
+		try {
+			unPedido.setGuardarInfo(new InformacionEnArchivo("Pedidos"));
+			unPedido.calcularCostoPedido(tarjetaVisa);
+			unPedido.calcularCostoPedido(tarjetaMastercard);
+			unPedido.calcularCostoPedido(tarjetaComarca);
+			unPedido.calcularCostoPedido(tarjetaViedma);
+		}catch(IOException e) {
+			
+		}
+		
+		
+//		System.out.println(unPedido.calcularCostoPedido(tarjetaVisa));
+//		System.out.println(unPedido.calcularCostoPedido(tarjetaMastercard));
+//		System.out.println(unPedido.calcularCostoPedido(tarjetaComarca));
+//		System.out.println(unPedido.calcularCostoPedido(tarjetaViedma));
 	}
 
 }
