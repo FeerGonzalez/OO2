@@ -53,6 +53,7 @@ public class Participante {
 			unConcurso.agregarParticipante(this);
 			String cadena = LocalDate.now().toString() + "," + this.id + "," + unConcurso.getId();
 			this.guardarInfo.registrarInfo(cadena);
+			new EnviarMail(this.contacto, "Inscripcion a " + unConcurso.getNombre(), "Pudo inscribirse al " + unConcurso.getNombre() + " Correctamente");
 			return true;
 		}else {
 			return false;
