@@ -36,4 +36,30 @@ public class InformacionEnArchivo implements GuardarInfo{
 			}
 		}
 	}
+
+	@Override
+	public void registrarInfo(String unString, String contactoParticipante, String nombreConcurso) throws IOException {
+		if(this.archivo.exists()) {
+			try {
+				this.escritura = new FileWriter(archivo, true);
+				this.linea = new PrintWriter(this.escritura);
+				this.linea.println(unString);
+				this.escritura.close();
+				this.linea.close();
+			} catch (IOException e) {
+			}
+		}else {
+			try {
+				this.archivo.createNewFile();
+				this.escritura = new FileWriter(archivo, true);
+				this.linea = new PrintWriter(this.escritura);
+				this.linea.println(unString);
+				this.escritura.close();
+				this.linea.close();
+			} catch (IOException e) {
+			}
+		}
+		
+		new EnviarMail(contactoParticipante, "Inscripcion a " + nombreConcurso, "Pudo inscribirse al " + nombreConcurso + " Correctamente");
+	}
 }

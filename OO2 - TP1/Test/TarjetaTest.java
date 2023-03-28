@@ -1,10 +1,13 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.io.IOException;
+
 import org.junit.jupiter.api.Test;
 
 import modelo.Bebida;
 import modelo.ComarcaPlus;
 import modelo.Mastercard;
+import modelo.ObjetoDeMentira;
 import modelo.Pedido;
 import modelo.Plato;
 import modelo.Tarjeta;
@@ -13,9 +16,13 @@ import modelo.Visa;
 public class TarjetaTest {
 	@Test
 	public void calcularCostoTarjetaVisa() {
+		
 		Visa tarjetaVisa = new Visa("Mariano Flores", 0001);
 		
 		Pedido unPedido = new Pedido();
+		ObjetoDeMentira unObjeto = new ObjetoDeMentira();
+		
+		unPedido.setGuardarInfo(unObjeto);
 		
 		unPedido.agregarBebidaAlPedido(new Bebida("Agua", 80));
 		unPedido.agregarBebidaAlPedido(new Bebida("Coca Cola", 120));
@@ -25,7 +32,11 @@ public class TarjetaTest {
 		
 		int resultadoEsperado = 1168;
 		
-		assertEquals(resultadoEsperado, unPedido.calcularCostoPedido(tarjetaVisa));
+		try {
+			assertEquals(resultadoEsperado, unPedido.calcularCostoPedido(tarjetaVisa));
+		} catch (IOException e) {
+			
+		}
 	}
 	
 	@Test
@@ -33,6 +44,9 @@ public class TarjetaTest {
 		Mastercard tarjetaMastercard = new Mastercard("Maximiliano Zambrana", 0002);
 		
 		Pedido unPedido = new Pedido();
+		ObjetoDeMentira unObjeto = new ObjetoDeMentira();
+		
+		unPedido.setGuardarInfo(unObjeto);
 		
 		unPedido.agregarBebidaAlPedido(new Bebida("Agua", 80));
 		unPedido.agregarBebidaAlPedido(new Bebida("Coca Cola", 120));
@@ -42,7 +56,11 @@ public class TarjetaTest {
 		
 		int resultadoEsperado = 1155;
 		
-		assertEquals(resultadoEsperado, unPedido.calcularCostoPedido(tarjetaMastercard));
+		try {
+			assertEquals(resultadoEsperado, unPedido.calcularCostoPedido(tarjetaMastercard));
+		} catch (IOException e) {
+			
+		}
 	}
 	
 	@Test
@@ -50,6 +68,9 @@ public class TarjetaTest {
 		ComarcaPlus tarjetaComarca =  new ComarcaPlus("Fernando Gonzalez", 0003);
 		
 		Pedido unPedido = new Pedido();
+		ObjetoDeMentira unObjeto = new ObjetoDeMentira();
+		
+		unPedido.setGuardarInfo(unObjeto);
 		
 		unPedido.agregarBebidaAlPedido(new Bebida("Agua", 80));
 		unPedido.agregarBebidaAlPedido(new Bebida("Coca Cola", 120));
@@ -59,7 +80,11 @@ public class TarjetaTest {
 		
 		int resultadoEsperado = 1151;
 		
-		assertEquals(resultadoEsperado, unPedido.calcularCostoPedido(tarjetaComarca));
+		try {
+			assertEquals(resultadoEsperado, unPedido.calcularCostoPedido(tarjetaComarca));
+		} catch (IOException e) {
+			
+		}
 	}
 	
 	@Test
@@ -67,6 +92,9 @@ public class TarjetaTest {
 		Tarjeta tarjetaViedma = new Tarjeta("Carlos Farra", 0004);
 		
 		Pedido unPedido = new Pedido();
+		ObjetoDeMentira unObjeto = new ObjetoDeMentira();
+		
+		unPedido.setGuardarInfo(unObjeto);
 		
 		unPedido.agregarBebidaAlPedido(new Bebida("Agua", 80));
 		unPedido.agregarBebidaAlPedido(new Bebida("Coca Cola", 120));
@@ -76,6 +104,10 @@ public class TarjetaTest {
 		
 		int resultadoEsperado = 1174;
 		
-		assertEquals(resultadoEsperado, unPedido.calcularCostoPedido(tarjetaViedma));
+		try {
+			assertEquals(resultadoEsperado, unPedido.calcularCostoPedido(tarjetaViedma));
+		} catch (IOException e) {
+			
+		}
 	}
 }

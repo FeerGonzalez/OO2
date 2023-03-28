@@ -30,17 +30,31 @@ public class InformacionEnBD implements GuardarInfo{
 			state.setString(1, unString);
 			
 			state.executeUpdate();
-			
-//			int seCreo = state.executeUpdate();
-
-//			if (seCreo > 0) {
-//				System.out.println("Se registro\n");
-//			} else {
-//				System.out.println("No se Registro\n");
-//			}
 		
 		}catch (SQLException e) {
-//			System.out.println(e.getMessage());
+
+		}
+	}
+	
+	
+	//Idea para el objeto de mentira
+	public void registrarInfo(String unString, String contactoParticipante, String nombreConcurso) throws IOException {
+		try (Connection miConexion = DriverManager.getConnection(this.url, this.user, this.password);
+				java.sql.PreparedStatement state = miConexion.prepareStatement(
+						"INSERT INTO registro (registro) VALUES (?)")) {
+			
+			state.setString(1, unString);
+			
+			state.executeUpdate();
+			
+			int seCreo = state.executeUpdate();
+
+			if (seCreo > 0) {
+				new EnviarMail(contactoParticipante, "Inscripcion a " + nombreConcurso, "Pudo inscribirse al " + nombreConcurso + " Correctamente");
+			}
+		
+		}catch (SQLException e) {
+			
 		}
 	}
 }
