@@ -1,4 +1,4 @@
-package modelo;
+package persistencia;
 
 import java.util.Properties;
 import jakarta.mail.Message;

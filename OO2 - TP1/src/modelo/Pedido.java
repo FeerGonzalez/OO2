@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Pedido {
-	private GuardarInfo guardarInfo;
+	private RegistroDatos guardarInfo;
 	private ArrayList<Bebida> listaBebidas;
 	private ArrayList<Plato> listaPlatos;
 	
@@ -15,7 +15,7 @@ public class Pedido {
 		this.listaPlatos = new ArrayList<>();
 	}
 	
-	public Pedido(GuardarInfo info) {
+	public Pedido(RegistroDatos info) {
 		this.guardarInfo = info;
 		this.listaBebidas = new ArrayList<>();
 		this.listaPlatos = new ArrayList<>();
@@ -27,7 +27,7 @@ public class Pedido {
 		this.listaPlatos = listaPlatosComprados;
 	}
 	
-	public Pedido(GuardarInfo info, ArrayList<Bebida> listaBebidasCompradas, ArrayList<Plato> listaPlatosComprados) {
+	public Pedido(RegistroDatos info, ArrayList<Bebida> listaBebidasCompradas, ArrayList<Plato> listaPlatosComprados) {
 		this.guardarInfo = info;
 		this.listaBebidas = listaBebidasCompradas;
 		this.listaPlatos = listaPlatosComprados;
@@ -73,11 +73,11 @@ public class Pedido {
 		}
 	}
 	
-	public GuardarInfo getGuardarInfo() {
+	public RegistroDatos getGuardarInfo() {
 		return guardarInfo;
 	}
 
-	public void setGuardarInfo(GuardarInfo guardarInfo) {
+	public void setGuardarInfo(RegistroDatos guardarInfo) {
 		this.guardarInfo = guardarInfo;
 	}
 }

@@ -4,13 +4,13 @@ import java.io.IOException;
 
 import modelo.Bebida;
 import modelo.ComarcaPlus;
-import modelo.InformacionEnArchivo;
-import modelo.InformacionEnBD;
 import modelo.Mastercard;
 import modelo.Pedido;
 import modelo.Plato;
 import modelo.Tarjeta;
 import modelo.Visa;
+import persistencia.EnDiscoRegistroDatos;
+import persistencia.JdbcRegistroDatos;
 
 public class Main2 {
 
@@ -31,7 +31,7 @@ public class Main2 {
 		
 		try {
 //			unPedido.setGuardarInfo(new InformacionEnArchivo("Pedidos"));
-			unPedido.setGuardarInfo(new InformacionEnBD("jdbc:mysql://127.0.0.1/tp2_oo2", "root", ""));
+			unPedido.setGuardarInfo(new JdbcRegistroDatos("jdbc:mysql://127.0.0.1/tp2_oo2", "root", ""));
 			unPedido.calcularCostoPedido(tarjetaVisa);
 			unPedido.calcularCostoPedido(tarjetaMastercard);
 			unPedido.calcularCostoPedido(tarjetaComarca);

@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import modelo.Bebida;
 import modelo.ComarcaPlus;
 import modelo.Mastercard;
-import modelo.ObjetoDeMentira;
 import modelo.Pedido;
 import modelo.Plato;
 import modelo.Tarjeta;
@@ -20,7 +19,7 @@ public class TarjetaTest {
 		Visa tarjetaVisa = new Visa("Mariano Flores", 0001);
 		
 		Pedido unPedido = new Pedido();
-		ObjetoDeMentira unObjeto = new ObjetoDeMentira();
+		FakeRegistroDatos unObjeto = new FakeRegistroDatos();
 		
 		unPedido.setGuardarInfo(unObjeto);
 		
@@ -44,7 +43,7 @@ public class TarjetaTest {
 		Mastercard tarjetaMastercard = new Mastercard("Maximiliano Zambrana", 0002);
 		
 		Pedido unPedido = new Pedido();
-		ObjetoDeMentira unObjeto = new ObjetoDeMentira();
+		FakeRegistroDatos unObjeto = new FakeRegistroDatos();
 		
 		unPedido.setGuardarInfo(unObjeto);
 		
@@ -68,7 +67,7 @@ public class TarjetaTest {
 		ComarcaPlus tarjetaComarca =  new ComarcaPlus("Fernando Gonzalez", 0003);
 		
 		Pedido unPedido = new Pedido();
-		ObjetoDeMentira unObjeto = new ObjetoDeMentira();
+		FakeRegistroDatos unObjeto = new FakeRegistroDatos();
 		
 		unPedido.setGuardarInfo(unObjeto);
 		
@@ -92,7 +91,7 @@ public class TarjetaTest {
 		Tarjeta tarjetaViedma = new Tarjeta("Carlos Farra", 0004);
 		
 		Pedido unPedido = new Pedido();
-		ObjetoDeMentira unObjeto = new ObjetoDeMentira();
+		FakeRegistroDatos unObjeto = new FakeRegistroDatos();
 		
 		unPedido.setGuardarInfo(unObjeto);
 		
