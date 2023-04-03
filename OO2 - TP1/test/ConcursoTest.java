@@ -11,7 +11,7 @@ import modelo.Participante;
 public class ConcursoTest {
 	@Test
 	public void inscribirseAConcurso() {
-		Concurso concurso = new Concurso("Concurso de Inteligencia", LocalDate.now().minusDays(3).toString(), LocalDate.now().plusDays(3).toString());
+		Concurso concurso = new Concurso("Concurso de Inteligencia", LocalDate.now().minusDays(3).toString(), LocalDate.now().plusDays(3).toString(), new FakeNotificar());
 		FakeRegistroDatos unObjeto = new FakeRegistroDatos();
 		Participante participante = new Participante("Maximiliano Flores", "max_flores@gmail.com", unObjeto);
 		
@@ -27,7 +27,7 @@ public class ConcursoTest {
 	
 	@Test
 	public void inscribirseAConcursoPrimerDia() {
-		Concurso concurso = new Concurso("Concurso de Belleza", LocalDate.now().toString(), LocalDate.now().plusDays(5).toString());
+		Concurso concurso = new Concurso("Concurso de Belleza", LocalDate.now().toString(), LocalDate.now().plusDays(5).toString(), new FakeNotificar());
 		FakeRegistroDatos unObjeto = new FakeRegistroDatos();
 		Participante participante = new Participante("Maximiliano Flores", "max_flores@gmail.com", unObjeto);
 		
@@ -43,7 +43,7 @@ public class ConcursoTest {
 	
 	@Test
 	public void inscribirseAConcursoFueraDeFecha() {
-		Concurso concurso = new Concurso("Concurso de Inventos", LocalDate.now().minusDays(8).toString(), LocalDate.now().minusDays(1).toString());
+		Concurso concurso = new Concurso("Concurso de Inventos", LocalDate.now().minusDays(8).toString(), LocalDate.now().minusDays(1).toString(), new FakeNotificar());
 		FakeRegistroDatos unObjeto = new FakeRegistroDatos();
 		Participante participante = new Participante("Maximiliano Flores", "max_flores@gmail.com", unObjeto);
 		

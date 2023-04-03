@@ -10,9 +10,10 @@ public class Concurso {
 	private LocalDate fechaAperturaInscripcion;
 	private LocalDate fechaCierreInscripcion;
 	private ArrayList<Participante> listaDeParticipantes;
+	private Notificar notificar;
 	
-	public Concurso(String nombre, String fechaApertura, String fechaCierre) {
-		if(nombre == null || fechaApertura == null || fechaCierre == null) {
+	public Concurso(String nombre, String fechaApertura, String fechaCierre, Notificar notificar) {
+		if(nombre == null || fechaApertura == null || fechaCierre == null || notificar == null) {
 			throw new RuntimeException("Faltan datos en uno de los campos para crear un concurso\n");
 		}
 		if(nombre.isEmpty() || fechaApertura.isEmpty() || fechaCierre.isEmpty()) {
@@ -23,6 +24,7 @@ public class Concurso {
 		this.fechaAperturaInscripcion = LocalDate.parse(fechaApertura);
 		this.fechaCierreInscripcion = LocalDate.parse(fechaCierre);
 		this.listaDeParticipantes = new ArrayList<>();
+		this.notificar = notificar;
 		auxID = auxID + 1;
 	}
 	
@@ -45,6 +47,10 @@ public class Concurso {
 			}
 			return true;
 		}
+	}
+	
+	public void notificarInscripcion(String unContacto) {
+		this.notificar.enviarNotificacion(unContacto, "Inscripcion a " + this.nombre, "Pudo inscribirse al " + this.nombre + " Correctamente");
 	}
 
 	public int getId() {
