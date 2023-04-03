@@ -23,8 +23,7 @@ public class Main {
 //			unParticipante.inscribirseAConcurso(unConcurso);
 			
 			participante2.inscribirseAConcurso(concurso2);
-//			unParticipante.setGuardarInfo(new InformacionEnArchivo("Inscripturas"));
-//			unParticipante.setGuardarInfo(new InformacionEnBD("jdbc:mysql://127.0.0.1/tp2_oo2", "root", ""));
+
 //			unParticipante.inscribirseAConcurso(concurso2);
 //			unParticipante.inscribirseAConcurso(concurso4);
 		} catch (IOException e) {

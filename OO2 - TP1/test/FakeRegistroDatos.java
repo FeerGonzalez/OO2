@@ -13,10 +13,4 @@ public class FakeRegistroDatos implements RegistroDatos{
 	String devolverString() {
 		return this.cadena;
 	}
-//	@Override
-//	public void registrarInfo(String unString, String contactoParticipante, String nombreConcurso) throws IOException {
-//		// TODO Auto-generated method stub
-//		
-//	}
-
 }

@@ -1,6 +1,7 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
 
@@ -15,24 +16,22 @@ import modelo.Visa;
 public class TarjetaTest {
 	@Test
 	public void calcularCostoTarjetaVisa() {
-		
-		Visa tarjetaVisa = new Visa("Mariano Flores", 0001);
-		
-		Pedido unPedido = new Pedido();
-		FakeRegistroDatos unObjeto = new FakeRegistroDatos();
-		
-		unPedido.setGuardarInfo(unObjeto);
-		
-		unPedido.agregarBebidaAlPedido(new Bebida("Agua", 80));
-		unPedido.agregarBebidaAlPedido(new Bebida("Coca Cola", 120));
-		
-		unPedido.agregarPlatoAlPedido(new Plato("Milanesa con papas fritas", 560));
-		unPedido.agregarPlatoAlPedido(new Plato("Pizza", 380));
-		
-		int resultadoEsperado = 1168;
-		
 		try {
-			assertEquals(resultadoEsperado, unPedido.calcularCostoPedido(tarjetaVisa));
+			Visa tarjetaVisa = new Visa("Mariano Flores", 0001);
+			FakeRegistroDatos unObjeto = new FakeRegistroDatos();
+			Pedido unPedido = new Pedido(unObjeto);
+			
+			unPedido.agregarBebidaAlPedido(new Bebida("Agua", 80));
+			unPedido.agregarBebidaAlPedido(new Bebida("Coca Cola", 120));
+			
+			unPedido.agregarPlatoAlPedido(new Plato("Milanesa con papas fritas", 560));
+			unPedido.agregarPlatoAlPedido(new Plato("Pizza", 380));
+			
+			int resultado = unPedido.calcularCostoPedido(tarjetaVisa);
+			int resultadoEsperado = 1168;
+		
+			assertEquals(resultadoEsperado, resultado);
+			assertEquals(LocalDate.now().toString() + " || " + resultado, unObjeto.devolverString());
 		} catch (IOException e) {
 			
 		}
@@ -40,23 +39,22 @@ public class TarjetaTest {
 	
 	@Test
 	public void calcularCostoTarjetaMastercard() {
-		Mastercard tarjetaMastercard = new Mastercard("Maximiliano Zambrana", 0002);
-		
-		Pedido unPedido = new Pedido();
-		FakeRegistroDatos unObjeto = new FakeRegistroDatos();
-		
-		unPedido.setGuardarInfo(unObjeto);
-		
-		unPedido.agregarBebidaAlPedido(new Bebida("Agua", 80));
-		unPedido.agregarBebidaAlPedido(new Bebida("Coca Cola", 120));
-		
-		unPedido.agregarPlatoAlPedido(new Plato("Milanesa con papas fritas", 560));
-		unPedido.agregarPlatoAlPedido(new Plato("Pizza", 380));
-		
-		int resultadoEsperado = 1155;
-		
 		try {
-			assertEquals(resultadoEsperado, unPedido.calcularCostoPedido(tarjetaMastercard));
+			Mastercard tarjetaMastercard = new Mastercard("Maximiliano Zambrana", 0002);
+			FakeRegistroDatos unObjeto = new FakeRegistroDatos();
+			Pedido unPedido = new Pedido(unObjeto);
+			
+			unPedido.agregarBebidaAlPedido(new Bebida("Agua", 80));
+			unPedido.agregarBebidaAlPedido(new Bebida("Coca Cola", 120));
+			
+			unPedido.agregarPlatoAlPedido(new Plato("Milanesa con papas fritas", 560));
+			unPedido.agregarPlatoAlPedido(new Plato("Pizza", 380));
+			
+			int resultado = unPedido.calcularCostoPedido(tarjetaMastercard);
+			int resultadoEsperado = 1155;
+		
+			assertEquals(resultadoEsperado, resultado);
+			assertEquals(LocalDate.now().toString() + " || " + resultado, unObjeto.devolverString());
 		} catch (IOException e) {
 			
 		}
@@ -64,23 +62,22 @@ public class TarjetaTest {
 	
 	@Test
 	public void calcularCostoTarjetaComarcaPlus() {
-		ComarcaPlus tarjetaComarca =  new ComarcaPlus("Fernando Gonzalez", 0003);
-		
-		Pedido unPedido = new Pedido();
-		FakeRegistroDatos unObjeto = new FakeRegistroDatos();
-		
-		unPedido.setGuardarInfo(unObjeto);
-		
-		unPedido.agregarBebidaAlPedido(new Bebida("Agua", 80));
-		unPedido.agregarBebidaAlPedido(new Bebida("Coca Cola", 120));
-		
-		unPedido.agregarPlatoAlPedido(new Plato("Milanesa con papas fritas", 560));
-		unPedido.agregarPlatoAlPedido(new Plato("Pizza", 380));
-		
-		int resultadoEsperado = 1151;
-		
 		try {
-			assertEquals(resultadoEsperado, unPedido.calcularCostoPedido(tarjetaComarca));
+			ComarcaPlus tarjetaComarca =  new ComarcaPlus("Fernando Gonzalez", 0003);
+			FakeRegistroDatos unObjeto = new FakeRegistroDatos();
+			Pedido unPedido = new Pedido(unObjeto);
+			
+			unPedido.agregarBebidaAlPedido(new Bebida("Agua", 80));
+			unPedido.agregarBebidaAlPedido(new Bebida("Coca Cola", 120));
+			
+			unPedido.agregarPlatoAlPedido(new Plato("Milanesa con papas fritas", 560));
+			unPedido.agregarPlatoAlPedido(new Plato("Pizza", 380));
+			
+			int resultado = unPedido.calcularCostoPedido(tarjetaComarca);
+			int resultadoEsperado = 1151;
+		
+			assertEquals(resultadoEsperado, resultado);
+			assertEquals(LocalDate.now().toString() + " || " + resultado, unObjeto.devolverString());
 		} catch (IOException e) {
 			
 		}
@@ -88,23 +85,22 @@ public class TarjetaTest {
 	
 	@Test
 	public void calcularCostoTarjetaViedma() {
-		Tarjeta tarjetaViedma = new Tarjeta("Carlos Farra", 0004);
-		
-		Pedido unPedido = new Pedido();
-		FakeRegistroDatos unObjeto = new FakeRegistroDatos();
-		
-		unPedido.setGuardarInfo(unObjeto);
-		
-		unPedido.agregarBebidaAlPedido(new Bebida("Agua", 80));
-		unPedido.agregarBebidaAlPedido(new Bebida("Coca Cola", 120));
-		
-		unPedido.agregarPlatoAlPedido(new Plato("Milanesa con papas fritas", 560));
-		unPedido.agregarPlatoAlPedido(new Plato("Pizza", 380));
-		
-		int resultadoEsperado = 1174;
-		
 		try {
-			assertEquals(resultadoEsperado, unPedido.calcularCostoPedido(tarjetaViedma));
+			Tarjeta tarjetaViedma = new Tarjeta("Carlos Farra", 0004);
+			FakeRegistroDatos unObjeto = new FakeRegistroDatos();
+			Pedido unPedido = new Pedido(unObjeto);
+			
+			unPedido.agregarBebidaAlPedido(new Bebida("Agua", 80));
+			unPedido.agregarBebidaAlPedido(new Bebida("Coca Cola", 120));
+			
+			unPedido.agregarPlatoAlPedido(new Plato("Milanesa con papas fritas", 560));
+			unPedido.agregarPlatoAlPedido(new Plato("Pizza", 380));
+			
+			int resultado = unPedido.calcularCostoPedido(tarjetaViedma);
+			int resultadoEsperado = 1174;
+			
+			assertEquals(resultadoEsperado, resultado);
+			assertEquals(LocalDate.now().toString() + " || " + resultado, unObjeto.devolverString());
 		} catch (IOException e) {
 			
 		}

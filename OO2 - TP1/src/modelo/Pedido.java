@@ -9,13 +9,17 @@ public class Pedido {
 	private ArrayList<Bebida> listaBebidas;
 	private ArrayList<Plato> listaPlatos;
 	
-	public Pedido() {
-		this.guardarInfo = null;
-		this.listaBebidas = new ArrayList<>();
-		this.listaPlatos = new ArrayList<>();
-	}
+//	public Pedido() {
+//		this.guardarInfo = null;
+//		this.listaBebidas = new ArrayList<>();
+//		this.listaPlatos = new ArrayList<>();
+//	}
 	
 	public Pedido(RegistroDatos info) {
+		if(info == null) {
+			new RuntimeException("Hay campos nulos");
+		}
+		
 		this.guardarInfo = info;
 		this.listaBebidas = new ArrayList<>();
 		this.listaPlatos = new ArrayList<>();
@@ -73,11 +77,11 @@ public class Pedido {
 		}
 	}
 	
-	public RegistroDatos getGuardarInfo() {
-		return guardarInfo;
-	}
-
-	public void setGuardarInfo(RegistroDatos guardarInfo) {
-		this.guardarInfo = guardarInfo;
-	}
+//	public RegistroDatos getGuardarInfo() {
+//		return guardarInfo;
+//	}
+//
+//	public void setGuardarInfo(RegistroDatos guardarInfo) {
+//		this.guardarInfo = guardarInfo;
+//	}
 }
