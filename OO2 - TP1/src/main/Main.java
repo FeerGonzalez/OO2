@@ -27,10 +27,11 @@ public class Main {
 
 //			unParticipante.inscribirseAConcurso(concurso2);
 //			unParticipante.inscribirseAConcurso(concurso4);
+//			unParticipante.inscribirseAConcurso(consurso3);
+//			unParticipante.inscribirseAConcurso(concurso4);
 		} catch (IOException e) {
 		}
-//		unParticipante.inscribirseAConcurso(consurso3);
-//		unParticipante.inscribirseAConcurso(concurso4);
+
 	}
 
 }
