@@ -22,15 +22,19 @@ public class Recaudacion {
     reader.close();
     csvData.remove(0);
 
+//    if (options.containsKey("company_name")) {
+//      List<String[]> results = new ArrayList<String[]>();
+//
+//      for (int i = 0; i < csvData.size(); i++) {
+//        if (csvData.get(i)[1].equals(options.get("company_name"))) {
+//          results.add(csvData.get(i));
+//        }
+//      }
+//      csvData = results;
+//    }
+    
     if (options.containsKey("company_name")) {
-      List<String[]> results = new ArrayList<String[]>();
-
-      for (int i = 0; i < csvData.size(); i++) {
-        if (csvData.get(i)[1].equals(options.get("company_name"))) {
-          results.add(csvData.get(i));
-        }
-      }
-      csvData = results;
+       csvData = filtro((String[] cadena) -> equals(options.get("company_name")), csvData);
     }
 
     if (options.containsKey("city")) {
@@ -97,6 +101,24 @@ public class Recaudacion {
       System.out.print("error");
     }
   }
+  
+  private List<String[]> filtro(Condicion condicion, List<String[]> csvData) {
+	  List<String[]> results = new ArrayList<String[]>();
+
+	  for (int i = 0; i < csvData.size(); i++) {
+        if (condicion.condicion(csvData.get(i))) {
+          results.add(csvData.get(i));
+        }
+      }
+	  
+//      for (int i = 0; i < csvData.size(); i++) {
+//        if (csvData.get(i)[4].equals(options.get("city"))) {
+//          results.add(csvData.get(i));
+//        }
+//      }
+      return results;
+  }
+  
 }
 
 
