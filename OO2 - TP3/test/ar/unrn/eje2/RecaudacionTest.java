@@ -10,7 +10,7 @@ import org.junit.Test;
 public class RecaudacionTest {
 
   @Test
-  public void testWhereGivenCompany() throws IOException {
+  public void testWhereGivenCompany() throws IOException { //Aplicar Lamda 
     Map<String, String> options = new HashMap<String, String>();
     options.put("company_name", "Facebook");
     Assert.assertEquals(Recaudacion.where(options).size(), 7);

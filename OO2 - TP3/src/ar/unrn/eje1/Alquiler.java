@@ -9,11 +9,20 @@ public class Alquiler {
     this.diasAlquilados = diasAlquilados;
   }
 
-  public int diasAlquilados() {
-    return this.diasAlquilados;
-  }
+//  public int diasAlquilados() { //Elimine los getters
+//    return this.diasAlquilados;
+//  }
 
-  public CopiaLibro copia() {
-    return this.copia;
+//  public CopiaLibro copia() {
+//    return this.copia;
+//  }
+  
+  public double calcularCosto() {
+	 return this.copia.calcularMonto(this.diasAlquilados);
   }
+  
+  public int calcularPuntos() {
+	  return this.copia.calcularPuntos(diasAlquilados);
+  }
+  
 }
