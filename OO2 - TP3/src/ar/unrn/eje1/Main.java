@@ -9,8 +9,8 @@ public class Main {
 	  CopiaLibro copiaLibroElTunel = new CopiaLibro(libroElTunel); //1
 	  CopiaLibro copiaLibroAntesDelFin = new CopiaLibro(libroAntesDelFin); //1
 	  
-//	  Alquiler alquilerElTunel = new Alquiler(copiaLibroElTunel, 5);
-//	  Alquiler alquilerAntesDelFin = new Alquiler(copiaLibroAntesDelFin, 3);
+//	  Alquiler alquilerElTunel = new Alquiler(copiaLibroElTunel, 5); //2
+//	  Alquiler alquilerAntesDelFin = new Alquiler(copiaLibroAntesDelFin, 3); //2
 	  
 	  Cliente cliente1 = new Cliente("Javier"); //1
 	  
@@ -25,7 +25,8 @@ public class Main {
 	  /* Refactorizaciones
 	   * 
 	   *  1 = Cambio en el nombre de las variables para mas representacion
-	   * 
+	   *  2 = Elimino los alquileres dado que ahora se crean dentro del metodo alquilar, y 
+	   *  		a este le paso por parametro la copia del libro y los dias a alquilar
 	   * 
 	   * 
 	   */
