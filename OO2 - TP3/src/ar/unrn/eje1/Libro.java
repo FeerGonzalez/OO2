@@ -9,6 +9,10 @@ public abstract class Libro {
 //	private int codigoPrecio;  Al hacer herencia ya no necesito el codigoPrecio
 	
 	public Libro(String nombre) {
+		if(nombre == null || nombre.isEmpty()) {
+			throw new RuntimeException("Faltan datos");
+		}
+		
 		this.nombre = nombre;
 	}
 	

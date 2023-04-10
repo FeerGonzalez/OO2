@@ -4,13 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cliente {
-  private List<Alquiler> alquileres;
-  private String name;
+	private List<Alquiler> alquileres;
+  	private String name;
 
-  public Cliente(String nombre) {
-	  this.name = nombre;
-	  this.alquileres = new ArrayList<Alquiler>(); //Inicializo el array en el constructor
-  }
+  	public Cliente(String nombre) {
+	  	if(nombre == null || nombre.isEmpty()) {
+	  		throw new RuntimeException("Faltan datos");
+		}
+	  
+	  	this.name = nombre;
+	  	this.alquileres = new ArrayList<Alquiler>(); //Inicializo el array en el constructor
+  	}
 
 //  public Object[] calcularDeudaYPuntosObtenidos() {
 //	  Object[] resultado = new Object[2];
@@ -48,26 +52,26 @@ public class Cliente {
 //    return resultado;
 //  }
   
-  public Object[] calcularDeudaYPuntosObtenidos() { //Re-hice el metodo para sacar el switch y facilitar la lectura del for
-	  Object[] resultado = new Object[2];
-	  double totalAPagar = 0;
-	  int puntosAlquiler = 0;
+  	public Object[] calcularDeudaYPuntosObtenidos() { //Re-hice el metodo para sacar el switch y facilitar la lectura del for
+	  	Object[] resultado = new Object[2];
+	  	double totalAPagar = 0;
+	  	int puntosAlquiler = 0;
 	  
-	  for (Alquiler alquiler : alquileres) {
-		totalAPagar += alquiler.calcularCosto();
-		puntosAlquiler += alquiler.calcularPuntos();
-	  }
+	  	for (Alquiler alquiler : alquileres) {
+			totalAPagar += alquiler.calcularCosto();
+			puntosAlquiler += alquiler.calcularPuntos();
+	  	}
 	  
-	  resultado[0] = totalAPagar;
-	  resultado[1] = puntosAlquiler;
+	  	resultado[0] = totalAPagar;
+	  	resultado[1] = puntosAlquiler;
 	  
-	  return resultado;
-  }
+	  	return resultado;
+  	}
 
-  public void alquilar(CopiaLibro libroRentado, int diasAlquilado) { // Ya no se ingresa un alquiler sino que se ingresa la copia del libro
-	  Alquiler nuevoAlquiler = new Alquiler(libroRentado, diasAlquilado); // y los dias que se alquila
-	  this.alquileres.add(nuevoAlquiler);
-  }
+  	public void alquilar(CopiaLibro libroRentado, int diasAlquilado) { // Ya no se ingresa un alquiler sino que se ingresa la copia del libro
+	  	Alquiler nuevoAlquiler = new Alquiler(libroRentado, diasAlquilado); // y los dias que se alquila
+	  	this.alquileres.add(nuevoAlquiler);
+  	}
   
 //  public void alquilar(Alquiler rental) {
 //	  alquileres.add(rental);
