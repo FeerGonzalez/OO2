@@ -32,9 +32,17 @@ public class ReporteDeGastosTest {
 		
 		ReporteDeGastos reporte1 = new ReporteDeGastos(LocalDate.now(), listaGastos);
 		
-		String resultadoEsperado = "Gasto de la comida \t" + 5650 + "\n" + "Gasto total \t" + 8150;
+		String resultadoEsperado = "Cafe con tostados	800	 \r\n"
+				+ "Cafe con leche con medialunas	600	 \r\n"
+				+ "Cafe negro con donas	750	 \r\n"
+				+ "Pizza Muzzarella	1800	 \r\n"
+				+ "Hamburguesa completa	1700	 \r\n"
+				+ "Peugeot 207	2500	 \r\n"
+				+ "Gasto de la comida 	5650\r\n"
+				+ "Gasto total 	8150\r\n"
+				+ "";
 		String cadena = reporte1.imprimir();
-		
+//		System.out.println(cadena);
 		assertEquals(resultadoEsperado, cadena);
 	}
 }

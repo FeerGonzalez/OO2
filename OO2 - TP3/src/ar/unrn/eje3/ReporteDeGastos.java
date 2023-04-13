@@ -38,7 +38,7 @@ public class ReporteDeGastos {
 			if(gasto instanceof Cena|| gasto instanceof Desayuno) {
 				gastosDeComida += gasto.costo;
 			}
-			String nombreGasto = gasto.nombre;
+//			String nombreGasto = gasto.nombre;
 			
 			String marcaExcesoComida = " ";
 			
@@ -46,13 +46,15 @@ public class ReporteDeGastos {
 				marcaExcesoComida = "X";
 			}
 			
-//			cadena += gasto.nombre + "\t" + gasto.costo + "\t" + marcaExcesoComida + "\n";
+			cadena += gasto.nombre + "\t" + gasto.costo + "\t" + marcaExcesoComida + "\n";
 			
 			total += gasto.costo;
 		}
 		
 		cadena += "Gasto de la comida \t" + gastosDeComida + "\n" + "Gasto total \t" + total;
 		
+		
+		System.out.println(cadena);
 		return cadena;
 		
 		
