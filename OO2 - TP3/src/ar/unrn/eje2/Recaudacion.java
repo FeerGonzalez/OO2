@@ -102,23 +102,6 @@ public class Recaudacion {
 //    }
 //  }
   
-//  private static List<String[]> filtroDeBusqueda(String busqueda, int posicion, Map<String, String> options, List<String[]> csvData) {
-//	  
-//
-////	    if (options.containsKey("city")) {														// Intento de metodo para
-////	    	csvData = filtroDeCondicion(x -> x[4].equals(options.get("city")), csvData);		// Encapsular los Ifs
-//	  System.out.println(options.size());
-//	  List<String[]> resultadoDeBusqueda = new ArrayList<String[]>();
-//	  
-//	  if(options.containsKey(busqueda)) {
-//		  System.out.println("Entro al if de filtroBusqueda");
-//		   resultadoDeBusqueda = filtroDeCondicion(x -> x[posicion].equals(options.get(busqueda)), csvData);
-//	  }
-////	  System.out.println("csvData FiltroBusqueda size " + csvData.size());
-////	  System.out.println("Result FiltroBusqueda size " + resultadoDeBusqueda.size());
-//	  return resultadoDeBusqueda;
-//  }
-  
   private static List<String[]> filtroDeCondicion(Condicion condicion, List<String[]> csvData) { //Funcion privada para reemplazar el codigo
 	  List<String[]> results = new ArrayList<String[]>();							//duplicado a traves de Lambda
 
