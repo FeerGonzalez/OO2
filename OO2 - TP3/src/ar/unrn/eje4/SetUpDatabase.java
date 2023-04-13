@@ -1,5 +1,7 @@
 package ar.unrn.eje4;
 
+import java.util.Objects;
+
 import org.jdbi.v3.core.Jdbi;
 
 public class SetUpDatabase {
@@ -7,6 +9,7 @@ public class SetUpDatabase {
   private Jdbi jdbi;
   
   public SetUpDatabase(Jdbi jdbi) {
+	  Objects.requireNonNull(jdbi);
     this.jdbi = jdbi;
   }
   
