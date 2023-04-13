@@ -9,8 +9,7 @@ import java.util.Map;
 import com.opencsv.CSVReader;
 
 public class Recaudacion {
-  public static List<Map<String, String>> where(Map<String, String> options)
-      throws IOException {
+  public static List<Map<String, String>> where(Map<String, String> options) throws IOException {
     List<String[]> csvData = new ArrayList<String[]>();
     CSVReader reader = new CSVReader(new FileReader("data.csv"));
     String[] row = null;
@@ -21,53 +20,54 @@ public class Recaudacion {
 
     reader.close();
     csvData.remove(0);
+    
+    if (options.containsKey("company_name")) { //Sustituyo el codigo por la expresion lambda
+       csvData = filtroDeCondicion(x -> x[1].equals(options.get("company_name")), csvData);
+//       List<String[]> results = new ArrayList<String[]>();
+//       
+//             for (int i = 0; i < csvData.size(); i++) {
+//               if (csvData.get(i)[1].equals(options.get("company_name"))) {
+//                 results.add(csvData.get(i));
+//               }
+//             }
+//             csvData = results;
+//           }
+    }
 
-//    if (options.containsKey("company_name")) {
+    if (options.containsKey("city")) {
+    	csvData = filtroDeCondicion(x -> x[4].equals(options.get("city")), csvData);
 //      List<String[]> results = new ArrayList<String[]>();
 //
 //      for (int i = 0; i < csvData.size(); i++) {
-//        if (csvData.get(i)[1].equals(options.get("company_name"))) {
+//        if (csvData.get(i)[4].equals(options.get("city"))) {
 //          results.add(csvData.get(i));
 //        }
 //      }
 //      csvData = results;
-//    }
-    
-    if (options.containsKey("company_name")) {
-       csvData = filtro((String[] cadena) -> equals(options.get("company_name")), csvData);
-    }
-
-    if (options.containsKey("city")) {
-      List<String[]> results = new ArrayList<String[]>();
-
-      for (int i = 0; i < csvData.size(); i++) {
-        if (csvData.get(i)[4].equals(options.get("city"))) {
-          results.add(csvData.get(i));
-        }
-      }
-      csvData = results;
     }
 
     if (options.containsKey("state")) {
-      List<String[]> results = new ArrayList<String[]>();
-
-      for (int i = 0; i < csvData.size(); i++) {
-        if (csvData.get(i)[5].equals(options.get("state"))) {
-          results.add(csvData.get(i));
-        }
-      }
-      csvData = results;
+    	csvData = filtroDeCondicion(x -> x[5].equals(options.get("state")), csvData);
+//      List<String[]> results = new ArrayList<String[]>();
+//
+//      for (int i = 0; i < csvData.size(); i++) {
+//        if (csvData.get(i)[5].equals(options.get("state"))) {
+//          results.add(csvData.get(i));
+//        }
+//      }
+//      csvData = results;
     }
 
     if (options.containsKey("round")) {
-      List<String[]> results = new ArrayList<String[]>();
-
-      for (int i = 0; i < csvData.size(); i++) {
-        if (csvData.get(i)[9].equals(options.get("round"))) {
-          results.add(csvData.get(i));
-        }
-      }
-      csvData = results;
+    	csvData = filtroDeCondicion(x -> x[9].equals(options.get("round")), csvData);
+//      List<String[]> results = new ArrayList<String[]>();
+//
+//      for (int i = 0; i < csvData.size(); i++) {
+//        if (csvData.get(i)[9].equals(options.get("round"))) {
+//          results.add(csvData.get(i));
+//        }
+//      }
+//      csvData = results;
     }
 
     List<Map<String, String>> output = new ArrayList<Map<String, String>>();
@@ -90,37 +90,48 @@ public class Recaudacion {
     return output;
   }
 
-  public static void main(String[] args) {
-    try {
-      Map<String, String> options = new HashMap<String, String>();
-      options.put("company_name", "Facebook");
-      options.put("round", "a");
-      System.out.print(Recaudacion.where(options).size());
-    } catch (IOException e) {
-      System.out.print(e.getMessage());
-      System.out.print("error");
-    }
-  }
+//  public static void main(String[] args) { //Saco el main a una clase aparte
+//    try {
+//      Map<String, String> options = new HashMap<String, String>();
+//      options.put("company_name", "Facebook");
+//      options.put("round", "a");
+//      System.out.print(Recaudacion.where(options).size());
+//    } catch (IOException e) {
+//      System.out.print(e.getMessage());
+//      System.out.print("error");
+//    }
+//  }
   
-  private List<String[]> filtro(Condicion condicion, List<String[]> csvData) {
-	  List<String[]> results = new ArrayList<String[]>();
+//  private static List<String[]> filtroDeBusqueda(String busqueda, int posicion, Map<String, String> options, List<String[]> csvData) {
+//	  
+//
+////	    if (options.containsKey("city")) {														// Intento de metodo para
+////	    	csvData = filtroDeCondicion(x -> x[4].equals(options.get("city")), csvData);		// Encapsular los Ifs
+//	  System.out.println(options.size());
+//	  List<String[]> resultadoDeBusqueda = new ArrayList<String[]>();
+//	  
+//	  if(options.containsKey(busqueda)) {
+//		  System.out.println("Entro al if de filtroBusqueda");
+//		   resultadoDeBusqueda = filtroDeCondicion(x -> x[posicion].equals(options.get(busqueda)), csvData);
+//	  }
+////	  System.out.println("csvData FiltroBusqueda size " + csvData.size());
+////	  System.out.println("Result FiltroBusqueda size " + resultadoDeBusqueda.size());
+//	  return resultadoDeBusqueda;
+//  }
+  
+  private static List<String[]> filtroDeCondicion(Condicion condicion, List<String[]> csvData) { //Funcion privada para reemplazar el codigo
+	  List<String[]> results = new ArrayList<String[]>();							//duplicado a traves de Lambda
 
 	  for (int i = 0; i < csvData.size(); i++) {
         if (condicion.condicion(csvData.get(i))) {
           results.add(csvData.get(i));
         }
       }
-	  
-//      for (int i = 0; i < csvData.size(); i++) {
-//        if (csvData.get(i)[4].equals(options.get("city"))) {
-//          results.add(csvData.get(i));
-//        }
-//      }
       return results;
   }
   
 }
 
 
-class NoSuchEntryException extends Exception {
-}
+//class NoSuchEntryException extends Exception { //Coloque la excepcion en una clase aparte
+//}
