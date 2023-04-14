@@ -6,4 +6,11 @@ public class Desayuno extends Gasto{
 		super(nombre, costo);
 	}
 
+	public int devolverMontoSiEsComida() {
+		return this.costo;
+	}
+	
+	public boolean esExcesoDeGasto() {
+		return this.costo > 1000;
+	}
 }

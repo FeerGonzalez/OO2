@@ -31,27 +31,23 @@ public class ReporteDeGastos {
 	public String imprimir() {
 		int total = 0;
 		int gastosDeComida = 0;
-		String cadena = "";
+		String cadena = "Expenses " + this.fecha;
 //    System.out.println("Expenses " + LocalDate.now());
 		
 		for (Gasto gasto : gastos) {
-			if(gasto instanceof Cena|| gasto instanceof Desayuno) {
-				gastosDeComida += gasto.costo;
-			}
-//			String nombreGasto = gasto.nombre;
+			
+			gastosDeComida += gasto.devolverMontoSiEsComida();
 			
 			String marcaExcesoComida = " ";
 			
-			if((gasto instanceof Cena && gasto.costo > 5000) || (gasto instanceof Desayuno && gasto.costo > 1000)) {
-				marcaExcesoComida = "X";
-			}
+			marcaExcesoComida = gasto.esExcesoDeGasto() ? "X" : " ";
 			
-			cadena += gasto.nombre + "\t" + gasto.costo + "\t" + marcaExcesoComida + "\n";
+			cadena += System.lineSeparator() + gasto.nombre + "\t" + gasto.costo + "\t" + marcaExcesoComida;
 			
 			total += gasto.costo;
 		}
 		
-		cadena += "Gasto de la comida \t" + gastosDeComida + "\n" + "Gasto total \t" + total;
+		cadena += System.lineSeparator() + "Gasto de la comida \t" + gastosDeComida + System.lineSeparator() + "Gasto total \t" + total;
 		
 		
 		System.out.println(cadena);

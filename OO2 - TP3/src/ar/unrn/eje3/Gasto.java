@@ -20,4 +20,12 @@ public abstract class Gasto {
 	public String getNombre() {
 		return this.nombre;
 	}
+	
+	public int devolverMontoSiEsComida() {
+		return 0;
+	}
+	
+	public boolean esExcesoDeGasto() {
+		return false;
+	}
 }
