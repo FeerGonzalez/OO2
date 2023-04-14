@@ -41,7 +41,7 @@ public class ReporteDeGastosTest {
 				+ "Peugeot 207	2500	 \r\n"
 				+ "Gasto de la comida 	10250\r\n"
 				+ "Gasto total 	12750";
-//		System.out.println(cadena);
+		
 		assertEquals(resultadoEsperado, reporte1.imprimir());
 	}
 }
