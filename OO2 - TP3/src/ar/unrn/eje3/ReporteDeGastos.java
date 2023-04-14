@@ -48,9 +48,7 @@ public class ReporteDeGastos {
 		}
 		
 		cadena += System.lineSeparator() + "Gasto de la comida \t" + gastosDeComida + System.lineSeparator() + "Gasto total \t" + total;
-		
-		
-		System.out.println(cadena);
+
 		return cadena;
 		
 		
