@@ -12,12 +12,19 @@ import ar.unrn.tp4.eje2.domain.portsout.Lectura;
 import ar.unrn.tp4.eje2.domain.portsout.Notificar;
 
 public class DefaultEmpleadoLectura implements Lectura{
+	private String archivo;
 	private Notificar medioDeNotificacion;
 	private List<Empleado> listaEmpleados;
 	
-	public DefaultEmpleadoLectura(Notificar notificar) {
+	public DefaultEmpleadoLectura(Notificar notificar, String archivo) {
 		Objects.requireNonNull(notificar);
+		Objects.requireNonNull(archivo);
 		
+		if(archivo.isEmpty() || archivo.isBlank()) {
+			throw new RuntimeException("El campo archivo esta vacio");
+		}
+		
+		this.archivo = archivo;
 		this.medioDeNotificacion = notificar;
 		this.listaEmpleados = new ArrayList<>();
 	}
@@ -29,9 +36,9 @@ public class DefaultEmpleadoLectura implements Lectura{
 	}
 
 	@Override
-	public void Leer(String nombreArchivo) {
+	public void Leer() {
 		try {
-            BufferedReader bufferReader = new BufferedReader(new FileReader(nombreArchivo));
+            BufferedReader bufferReader = new BufferedReader(new FileReader(this.archivo));
 
             String cadena;
             while ((cadena = bufferReader.readLine()) != null) {
