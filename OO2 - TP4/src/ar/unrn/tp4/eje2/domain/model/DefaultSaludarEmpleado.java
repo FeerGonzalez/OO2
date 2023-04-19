@@ -1,8 +1,5 @@
 package ar.unrn.tp4.eje2.domain.model;
 
-//import java.io.BufferedReader;
-//import java.io.FileReader;
-//import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,21 +11,14 @@ import ar.unrn.tp4.eje2.domain.portsout.Lectura;
 import ar.unrn.tp4.eje2.domain.portsout.Notificar;
 
 public class DefaultSaludarEmpleado implements SaludarEmpleado{
-//	private String archivo;
 	private Lectura medioDeLectura;
 	private Notificar medioDeNotificacion;
 	private List<Empleado> listaEmpleados;
 
 	public DefaultSaludarEmpleado(Lectura lectura, Notificar notificar) {
-//		Objects.requireNonNull(archivo);
 		Objects.requireNonNull(lectura);
 		Objects.requireNonNull(notificar);
 		
-//		if(archivo.isEmpty() || archivo.isBlank()) {
-//			throw new RuntimeException("El campo archivo esta vacio");
-//		}
-		
-//		this.archivo = archivo;
 		this.medioDeLectura = lectura;
 		this.medioDeNotificacion = notificar;
 		this.listaEmpleados = new ArrayList<>();
@@ -37,7 +27,7 @@ public class DefaultSaludarEmpleado implements SaludarEmpleado{
 	@Override
 	public void enviarSaludo() {
 		List<EmpleadoRecord> listaObjetos = this.medioDeLectura.Leer();
-		List<Empleado> listaEmpleados = new ArrayList<>();
+
 		for (EmpleadoRecord empleadoRecord : listaObjetos) {
 			listaEmpleados.add(new Empleado(empleadoRecord.apellido(), empleadoRecord.nombre(),
 					empleadoRecord.fechaNacimiento(), empleadoRecord.email()));
