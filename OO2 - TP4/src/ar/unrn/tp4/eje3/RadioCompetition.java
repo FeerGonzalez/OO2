@@ -70,10 +70,11 @@ public class RadioCompetition {
 		 lblCompetition = new JLabel("Concurso:");
 		 comboBox = new JComboBox<String>();
 		 todosLosConcursos();
-		 }
-		 private void todosLosConcursos() {
+	 }
+	 
+	 private void todosLosConcursos() {
 		 // carga del archivo de texto concursos.txt los concursos
-		 }
+	 }
 	
 	 private void saveInscription() {
 		 if (validations()) {
@@ -87,8 +88,7 @@ public class RadioCompetition {
 		 return false;
 		 }
 		 if ("".equals(txtLastName.getText())) {
-		 JOptionPane.showMessageDialog(this.contentPane,
-		 "apellido no puede ser vacio");
+		 JOptionPane.showMessageDialog(this.contentPane, "apellido no puede ser vacio");
 		 return false;
 		 }
 		 if ("".equals(txtId.getText())) {
@@ -96,13 +96,11 @@ public class RadioCompetition {
 		 return false;
 		 }
 		 if (!checkEmail(txtEmail.getText())) {
-		 JOptionPane.showMessageDialog(this.contentPane,
-		 "email debe ser válido");
+		 JOptionPane.showMessageDialog(this.contentPane, "email debe ser válido");
 		 return false;
 		 }
 		 if (!checkPhone(txtPhone.getText())) {
-		 JOptionPane.showMessageDialog(this.contentPane,
-		 "El teléfono debe ingresarse de la siguiente forma: NNNN-NNNNNN");
+		 JOptionPane.showMessageDialog(this.contentPane, "El teléfono debe ingresarse de la siguiente forma: NNNN-NNNNNN");
 		 return false;
 		 }
 		 if (this.comboBox.getSelectedIndex() <= 0) {
@@ -110,79 +108,80 @@ public class RadioCompetition {
 		 return false;
 		 }
 		 return true;
-		 }
-		 private boolean checkEmail(String email) {
+	 }
+	 
+	 private boolean checkEmail(String email) {
 		 String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
 		 return email.matches(regex);
-		 }
+	 }
 
-		private boolean checkPhone(String telefono) {
-			String regex = "\\d{4}-\\d{6}";
-			return telefono.matches(regex);
-		}
+	private boolean checkPhone(String telefono) {
+		String regex = "\\d{4}-\\d{6}";
+		return telefono.matches(regex);
+	}
 		
-		 private void layout() {
-			 GroupLayout gl_contentPane = new GroupLayout(contentPane);
-			 gl_contentPane.setHorizontalGroup(gl_contentPane
-			 .createParallelGroup(Alignment.LEADING)
-			 .addGroup(gl_contentPane.createSequentialGroup().addContainerGap()
-			 .addGroup(gl_contentPane
-			 .createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
-			 .createSequentialGroup()
-			 .addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-			 .addComponent(lblLastName).addComponent(lblId)
-			 .addComponent(lblPhone).addComponent(lblEmail)
-			 .addComponent(lblName).addComponent(lblCompetition))
-			 .addPreferredGap(ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-			 .addGroup(
-			 gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-			 .addComponent(comboBox, 0, GroupLayout.DEFAULT_SIZE,
-			 Short.MAX_VALUE)
-			 .addComponent(txtEmail, Alignment.TRAILING)
-			 .addComponent(txtPhone, Alignment.TRAILING)
-			 .addComponent(txtId, Alignment.TRAILING)
-			 .addComponent(txtLastName, Alignment.TRAILING)
-			 .addComponent(txtName, Alignment.TRAILING,
-			 GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)))
-			 .addComponent(btnOk, Alignment.TRAILING,
-			 GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
-			 .addContainerGap()));
-			 gl_contentPane
-			 .setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-			 .addGroup(gl_contentPane.createSequentialGroup()
-			 .addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-			 .addComponent(txtName, GroupLayout.PREFERRED_SIZE,
-			 GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-			 .addComponent(lblName))
-			 .addPreferredGap(ComponentPlacement.RELATED)
-			 .addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-			 .addComponent(lblLastName).addComponent(txtLastName,
-			 GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-			 GroupLayout.PREFERRED_SIZE))
-			 .addPreferredGap(ComponentPlacement.RELATED)
-			 .addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-			 .addComponent(lblId).addComponent(
-			 txtId, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-			 GroupLayout.PREFERRED_SIZE))
-			 .addPreferredGap(ComponentPlacement.RELATED)
-			 .addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-			 .addGroup(
-			 gl_contentPane.createSequentialGroup().addComponent(lblPhone)
-			 .addPreferredGap(ComponentPlacement.UNRELATED)
-			 .addComponent(lblEmail))
-			 .addGroup(gl_contentPane.createSequentialGroup()
-			 .addComponent(txtPhone, GroupLayout.PREFERRED_SIZE,
-			 GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-			 .addPreferredGap(ComponentPlacement.RELATED)
-			 .addComponent(txtEmail, GroupLayout.PREFERRED_SIZE,
-			 GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-			 .addPreferredGap(ComponentPlacement.RELATED).addGroup(
-			 gl_contentPane.createParallelGroup(Alignment.BASELINE)
-			 .addComponent(comboBox, GroupLayout.PREFERRED_SIZE,
-			 GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-			 .addComponent(lblCompetition))))
-			 .addPreferredGap(ComponentPlacement.RELATED).addComponent(btnOk)
-			 .addContainerGap(67, Short.MAX_VALUE)));
-			 contentPane.setLayout(gl_contentPane);
-			 }
+	 private void layout() {
+		 GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		 gl_contentPane.setHorizontalGroup(gl_contentPane
+		 .createParallelGroup(Alignment.LEADING)
+		 .addGroup(gl_contentPane.createSequentialGroup().addContainerGap()
+		 .addGroup(gl_contentPane
+		 .createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
+		 .createSequentialGroup()
+		 .addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+		 .addComponent(lblLastName).addComponent(lblId)
+		 .addComponent(lblPhone).addComponent(lblEmail)
+		 .addComponent(lblName).addComponent(lblCompetition))
+		 .addPreferredGap(ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+		 .addGroup(
+		 gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+		 .addComponent(comboBox, 0, GroupLayout.DEFAULT_SIZE,
+		 Short.MAX_VALUE)
+		 .addComponent(txtEmail, Alignment.TRAILING)
+		 .addComponent(txtPhone, Alignment.TRAILING)
+		 .addComponent(txtId, Alignment.TRAILING)
+		 .addComponent(txtLastName, Alignment.TRAILING)
+		 .addComponent(txtName, Alignment.TRAILING,
+		 GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)))
+		 .addComponent(btnOk, Alignment.TRAILING,
+		 GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
+		 .addContainerGap()));
+		 gl_contentPane
+		 .setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+		 .addGroup(gl_contentPane.createSequentialGroup()
+		 .addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+		 .addComponent(txtName, GroupLayout.PREFERRED_SIZE,
+		 GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+		 .addComponent(lblName))
+		 .addPreferredGap(ComponentPlacement.RELATED)
+		 .addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+		 .addComponent(lblLastName).addComponent(txtLastName,
+		 GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+		 GroupLayout.PREFERRED_SIZE))
+		 .addPreferredGap(ComponentPlacement.RELATED)
+		 .addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+		 .addComponent(lblId).addComponent(
+		 txtId, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+		 GroupLayout.PREFERRED_SIZE))
+		 .addPreferredGap(ComponentPlacement.RELATED)
+		 .addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+		 .addGroup(
+		 gl_contentPane.createSequentialGroup().addComponent(lblPhone)
+		 .addPreferredGap(ComponentPlacement.UNRELATED)
+		 .addComponent(lblEmail))
+		 .addGroup(gl_contentPane.createSequentialGroup()
+		 .addComponent(txtPhone, GroupLayout.PREFERRED_SIZE,
+		 GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+		 .addPreferredGap(ComponentPlacement.RELATED)
+		 .addComponent(txtEmail, GroupLayout.PREFERRED_SIZE,
+		 GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+		 .addPreferredGap(ComponentPlacement.RELATED).addGroup(
+		 gl_contentPane.createParallelGroup(Alignment.BASELINE)
+		 .addComponent(comboBox, GroupLayout.PREFERRED_SIZE,
+		 GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+		 .addComponent(lblCompetition))))
+		 .addPreferredGap(ComponentPlacement.RELATED).addComponent(btnOk)
+		 .addContainerGap(67, Short.MAX_VALUE)));
+		 contentPane.setLayout(gl_contentPane);
+	 }
 }
