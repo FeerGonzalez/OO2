@@ -3,10 +3,10 @@ package eje2;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Spike implements Item {
+public class HistoriaUsuario implements Item {
 	private List<Tarea> listaTareas;
 
-	public Spike() {
+	public HistoriaUsuario() {
 		this.listaTareas = new ArrayList<>();
 	}
 
@@ -24,5 +24,4 @@ public class Spike implements Item {
 
 		return tiempoEstimado;
 	}
-
 }
