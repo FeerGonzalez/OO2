@@ -1,5 +1,17 @@
 package eje1;
 
-public class Motor {
-
+public abstract class Motor {
+	
+	public void arrancar() {
+		
+	}
+	
+	public void acelerar() {
+		
+	}
+	
+	public void apagar() {
+		
+	}
+	
 }
