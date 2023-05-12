@@ -1,5 +1,5 @@
 package eje1;
 
-public class Comun {
+public class Comun extends Motor{
 
 }

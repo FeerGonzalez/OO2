@@ -1,5 +1,5 @@
 package eje1;
 
-public class Economico {
+public class Economico extends Motor{
 
 }
