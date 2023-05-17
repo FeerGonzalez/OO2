@@ -25,7 +25,7 @@ public class WeatherChannelService implements ClimaOnline {
 	}
 
 	@Override
-	public String temperatura() {
+	public double temperatura() {
 		HttpClient httpClient = HttpClient.newHttpClient();
 		String url = "https://api.openweathermap.org/data/2.5/weather?q=viedma,032&lang=sp&APPID=" + this.apiKey
 				+ "&units=metric";
@@ -41,7 +41,7 @@ public class WeatherChannelService implements ClimaOnline {
 		String jsonString = response.body();
 		Gson gson = new GsonBuilder().create();
 		var jsonObject = gson.fromJson(jsonString, JsonObject.class);
-		String temp = jsonObject.getAsJsonObject("main").getAsJsonObject().get("temp").toString();
-		return temp + " c";
+		double temp = Double.parseDouble(jsonObject.getAsJsonObject("main").getAsJsonObject().get("temp").toString());
+		return temp;
 	}
 }
