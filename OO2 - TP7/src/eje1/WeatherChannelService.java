@@ -41,7 +41,7 @@ public class WeatherChannelService implements ClimaOnline {
 		String jsonString = response.body();
 		Gson gson = new GsonBuilder().create();
 		var jsonObject = gson.fromJson(jsonString, JsonObject.class);
-		double temp = Double.parseDouble(jsonObject.getAsJsonObject("main").getAsJsonObject().get("temp").toString());
+		double temp = jsonObject.getAsJsonObject("main").getAsJsonObject().get("temp").getAsInt();
 		return temp;
 	}
 }
