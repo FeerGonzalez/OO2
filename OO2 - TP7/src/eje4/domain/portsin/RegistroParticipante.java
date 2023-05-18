@@ -1,6 +1,6 @@
-package eje3.domain.portsin;
+package eje4.domain.portsin;
 
-import eje3.domain.portsout.InfraestructureException;
+import eje4.domain.portsout.InfraestructureException;
 
 public interface RegistroParticipante {
 	public void registrar(ParticipanteRecord participante) throws DomainException, InfraestructureException;

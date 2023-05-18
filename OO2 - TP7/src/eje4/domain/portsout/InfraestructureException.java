@@ -1,4 +1,4 @@
-package eje3.domain.portsout;
+package eje4.domain.portsout;
 
 public class InfraestructureException extends Exception{
 	

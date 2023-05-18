@@ -1,4 +1,4 @@
-package eje3.infraestructure.ui;
+package eje4.infraestructure.ui;
 
 import java.awt.ComponentOrientation;
 import java.awt.FlowLayout;
@@ -14,10 +14,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import eje3.domain.portsin.DomainException;
-import eje3.domain.portsin.ParticipanteRecord;
-import eje3.domain.portsin.RegistroParticipante;
-import eje3.domain.portsout.InfraestructureException;
+import eje4.domain.portsin.DomainException;
+import eje4.domain.portsin.ParticipanteRecord;
+import eje4.domain.portsin.RegistroParticipante;
+import eje4.domain.portsout.InfraestructureException;
 
 public class AgregarParticipante extends JFrame {
 

@@ -1,4 +1,4 @@
-package eje3.domain.portsin;
+package eje4.domain.portsin;
 
 public class DomainException extends Exception {
 	

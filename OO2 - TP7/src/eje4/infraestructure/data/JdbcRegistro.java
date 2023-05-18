@@ -1,4 +1,4 @@
-package eje3.infraestructure.data;
+package eje4.infraestructure.data;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,8 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Objects;
 
-import eje3.domain.portsout.InfraestructureException;
-import eje3.domain.portsout.Registro;
+import eje4.domain.portsout.InfraestructureException;
+import eje4.domain.portsout.Registro;
 
 public class JdbcRegistro implements Registro {
 	private String url;

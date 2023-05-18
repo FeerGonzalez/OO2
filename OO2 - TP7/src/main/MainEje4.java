@@ -3,11 +3,11 @@ package main;
 import java.awt.EventQueue;
 import java.sql.SQLException;
 
-import eje3.domain.model.DefaultRegistroParticipante;
-import eje3.infraestructure.data.JdbcRegistro;
-import eje3.infraestructure.ui.AgregarParticipante;
+import eje4.domain.model.DefaultRegistroParticipante;
+import eje4.infraestructure.data.JdbcRegistro;
+import eje4.infraestructure.ui.AgregarParticipante;
 
-public class MainEje3 {
+public class MainEje4 {
 	public static void main(String[] args) throws SQLException {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {

@@ -1,8 +1,8 @@
-package eje3.domain.model;
+package eje4.domain.model;
 
 import java.util.Objects;
 
-import eje3.domain.portsin.DomainException;
+import eje4.domain.portsin.DomainException;
 
 class Participante {
 	private String nombre;

@@ -1,9 +1,9 @@
-package eje3.domain.model;
+package eje4.domain.model;
 
 import java.util.Objects;
 import java.util.Set;
 
-import eje3.domain.portsin.DomainException;
+import eje4.domain.portsin.DomainException;
 
 class Region {
 	private String region;

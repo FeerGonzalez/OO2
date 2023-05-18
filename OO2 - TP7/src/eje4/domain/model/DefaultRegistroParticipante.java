@@ -1,10 +1,10 @@
-package eje3.domain.model;
+package eje4.domain.model;
 
-import eje3.domain.portsin.DomainException;
-import eje3.domain.portsin.ParticipanteRecord;
-import eje3.domain.portsin.RegistroParticipante;
-import eje3.domain.portsout.InfraestructureException;
-import eje3.domain.portsout.Registro;
+import eje4.domain.portsin.DomainException;
+import eje4.domain.portsin.ParticipanteRecord;
+import eje4.domain.portsin.RegistroParticipante;
+import eje4.domain.portsout.InfraestructureException;
+import eje4.domain.portsout.Registro;
 
 public class DefaultRegistroParticipante implements RegistroParticipante {
 	private Registro registro;
