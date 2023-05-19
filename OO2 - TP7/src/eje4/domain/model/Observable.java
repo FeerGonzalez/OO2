@@ -3,7 +3,7 @@ package eje4.domain.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import eje1y2.Observer;
+import eje4.domain.portsout.Observer;
 
 abstract class Observable {
 	private List<Observer> observadores;
@@ -16,9 +16,9 @@ abstract class Observable {
 		this.observadores.add(obs);
 	}
 
-	protected void notificar(String valor) {
+	protected void notificar(String contacto, String motivo) {
 		for (Observer observer : observadores) {
-			observer.actualizar(valor);
+			observer.actualizar(contacto, motivo);
 		}
 	}
 }
