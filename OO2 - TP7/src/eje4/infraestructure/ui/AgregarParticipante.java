@@ -25,6 +25,7 @@ public class AgregarParticipante extends JFrame {
 	private JTextField nombre;
 	private JTextField telefono;
 	private JTextField region;
+	private JTextField email;
 
 	public AgregarParticipante(RegistroParticipante registro) throws SQLException {
 		this.registro = registro;
@@ -32,8 +33,9 @@ public class AgregarParticipante extends JFrame {
 	}
 
 	private void setupUIComponents() {
+		getContentPane().setLayout(null);
 		setTitle("Add Participant");
-		setSize(522, 150);
+		setSize(328, 118);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.nombre = new JTextField(10);
 		this.telefono = new JTextField(10);
@@ -42,22 +44,28 @@ public class AgregarParticipante extends JFrame {
 		this.telefono.setText("");
 		this.region.setText("China");
 		JPanel contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new FlowLayout());
-		contentPane.add(new JLabel("Nombre: "));
+		contentPane.setBorder(new EmptyBorder(10, 10, 10, 10));
+		contentPane.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		JLabel label = new JLabel("Nombre: ");
+		contentPane.add(label);
 		contentPane.add(nombre);
-		contentPane.add(new JLabel("Telefono: "));
+		JLabel label_1 = new JLabel("Telefono: ");
+		contentPane.add(label_1);
 		contentPane.add(telefono);
-		contentPane.add(new JLabel("Region: "));
+
+		JLabel emailLabel = new JLabel("Email: ");
+		contentPane.add(emailLabel);
+
+		email = new JTextField();
+		contentPane.add(email);
+		email.setColumns(10);
+		JLabel label_2 = new JLabel("Region: ");
+		contentPane.add(label_2);
 		contentPane.add(region);
 		JButton botonCargar = new JButton("Cargar");
 		botonCargar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					onBotonCargar();
-				} catch (SQLException e1) {
-					throw new RuntimeException(e1);
-				}
+				onBotonCargar();
 			}
 		});
 		contentPane.add(botonCargar);
@@ -67,10 +75,11 @@ public class AgregarParticipante extends JFrame {
 		setVisible(true);
 	}
 
-	private void onBotonCargar() throws SQLException {
+	private void onBotonCargar() {
 
 		try {
-			this.registro.registrar(new ParticipanteRecord(nombre.getText(), telefono.getText(), region.getText()));
+			this.registro.registrar(
+					new ParticipanteRecord(nombre.getText(), telefono.getText(), email.getText(), region.getText()));
 			dispose();
 		} catch (DomainException | InfraestructureException e) {
 			JOptionPane.showMessageDialog(this, e.getMessage());

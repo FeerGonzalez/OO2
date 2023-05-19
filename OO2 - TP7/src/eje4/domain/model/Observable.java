@@ -1,9 +1,11 @@
-package eje1;
+package eje4.domain.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Observable {
+import eje1y2.Observer;
+
+abstract class Observable {
 	private List<Observer> observadores;
 
 	public Observable() {

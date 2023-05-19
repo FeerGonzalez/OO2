@@ -25,19 +25,21 @@ public class JdbcRegistro implements Registro {
 	}
 
 	@Override
-	public void registrar(String nombre, String numeroTelefono, String region) throws InfraestructureException {
+	public void registrar(String nombre, String numeroTelefono, String email, String region)
+			throws InfraestructureException {
 		try {
 			Connection dbConn = DriverManager.getConnection(url, user, password);
 
 			PreparedStatement st = dbConn
-					.prepareStatement("insert into participantes(nombre, telefono, region) values(?,?,?)");
+					.prepareStatement("insert into registro(nombre, telefono, email, region) values(?,?,?,?)");
 			st.setString(1, nombre);
 			st.setString(2, numeroTelefono);
-			st.setString(3, region);
+			st.setString(3, email);
+			st.setString(4, region);
 			st.executeUpdate();
 			st.close();
 		} catch (SQLException e) {
-			throw new InfraestructureException("El participante no se pudo inscribir");
+			throw new InfraestructureException("El participante no se pudo inscribir " + e.getMessage());
 		}
 	}
 

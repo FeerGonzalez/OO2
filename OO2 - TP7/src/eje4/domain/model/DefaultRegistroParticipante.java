@@ -15,9 +15,9 @@ public class DefaultRegistroParticipante implements RegistroParticipante {
 
 	public void registrar(ParticipanteRecord participante) throws DomainException, InfraestructureException {
 		Participante nuevoParticipante = new Participante(participante.nombre(), participante.telefono(),
-				participante.region());
+				participante.email(), participante.region());
 
-		registro.registrar(nuevoParticipante.getNombre(), nuevoParticipante.getTelefono(),
+		registro.registrar(nuevoParticipante.getNombre(), nuevoParticipante.getTelefono(), nuevoParticipante.getEmail(),
 				nuevoParticipante.getRegion());
 
 	}

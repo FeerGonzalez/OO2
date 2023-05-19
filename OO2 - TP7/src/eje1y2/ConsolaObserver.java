@@ -1,4 +1,4 @@
-package eje1;
+package eje1y2;
 
 public class ConsolaObserver implements Observer {
 

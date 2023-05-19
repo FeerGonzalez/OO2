@@ -13,7 +13,7 @@ public class MainEje4 {
 			public void run() {
 				try {
 					new AgregarParticipante(new DefaultRegistroParticipante(
-							new JdbcRegistro("jdbc:mysql://127.0.0.1/participantes", "root", "")));
+							new JdbcRegistro("jdbc:mysql://127.0.0.1/tp7_oo2", "root", "")));
 				} catch (Exception e) {
 					System.out.println(e);
 				}

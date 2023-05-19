@@ -7,9 +7,10 @@ import eje4.domain.portsin.DomainException;
 class Participante {
 	private String nombre;
 	private Telefono telefono;
+	private Email email;
 	private Region region;
 
-	public Participante(String nombre, String telefono, String region) throws DomainException {
+	public Participante(String nombre, String telefono, String email, String region) throws DomainException {
 		Objects.requireNonNull(nombre);
 
 		if (nombre.isEmpty() || nombre.isBlank()) {
@@ -18,6 +19,7 @@ class Participante {
 
 		this.nombre = nombre;
 		this.telefono = new Telefono(telefono);
+		this.email = new Email(email);
 		this.region = new Region(region);
 	}
 
@@ -27,6 +29,10 @@ class Participante {
 
 	public String getTelefono() {
 		return telefono.getTelefono();
+	}
+
+	public String getEmail() {
+		return email.getEmail();
 	}
 
 	public String getRegion() {

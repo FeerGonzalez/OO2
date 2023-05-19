@@ -2,10 +2,10 @@ package main;
 
 import java.util.List;
 
-import eje1.ArchivoObserver;
-import eje1.ConsolaObserver;
-import eje1.Medidor;
-import eje1.WeatherChannelService;
+import eje1y2.ArchivoObserver;
+import eje1y2.ConsolaObserver;
+import eje1y2.Medidor;
+import eje1y2.WeatherChannelService;
 
 public class MainEje1 {
 
