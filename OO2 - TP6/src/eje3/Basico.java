@@ -1,8 +1,7 @@
 package eje3;
 
-public class Basico implements Combo {
+public class Basico implements Comida {
 	private double precio;
-	private Comida porcionesAgregadas;
 //	private List<Comida> porcionesAgregadas;
 
 	public Basico(double precio, Comida comida) {
@@ -31,6 +30,12 @@ public class Basico implements Combo {
 			costo = this.porcionesAgregadas.calcularCosto();
 		}
 		return this.precio + costo;
+	}
+
+	@Override
+	public double calcularCosto() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 //	@Override
