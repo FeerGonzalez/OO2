@@ -1,30 +1,27 @@
 package eje3;
 
-public class Especial implements Combo {
-	private double precio;
-	private Comida porcionesAgregadas;
+public class Especial extends Comida {
 
-	public Especial(double precio, Comida comida) {
-		this.precio = precio;
-		this.porcionesAgregadas = comida;
+	public Especial(double precio) {
+		super(precio, "Es un Combo Especial");
 	}
-
-	@Override
-	public void verDetalle() {
-		System.out.println("Este es un Combo Especial: $" + this.precio);
-		if (this.porcionesAgregadas != null) {
-			this.porcionesAgregadas.verDetalle();
-		}
-		System.out.println("Precio final del combo: $" + this.calcularMontoFinal());
-	}
-
-	private double calcularMontoFinal() {
-		double costo = 0;
-		if (this.porcionesAgregadas != null) {
-			costo = this.porcionesAgregadas.calcularCosto();
-		}
-		return this.precio + costo;
-	}
+//
+//	@Override
+//	public void verDetalle() {
+//		System.out.println("Este es un Combo Especial: $" + this.precio);
+//		if (this.porcionesAgregadas != null) {
+//			this.porcionesAgregadas.verDetalle();
+//		}
+//		System.out.println("Precio final del combo: $" + this.calcularMontoFinal());
+//	}
+//
+//	private double calcularMontoFinal() {
+//		double costo = 0;
+//		if (this.porcionesAgregadas != null) {
+//			costo = this.porcionesAgregadas.calcularCosto();
+//		}
+//		return this.precio + costo;
+//	}
 
 //	@Override
 //	public double calcularMontoFinal() {

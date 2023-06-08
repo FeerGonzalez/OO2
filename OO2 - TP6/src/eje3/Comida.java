@@ -1,9 +1,19 @@
 package eje3;
 
-public interface Comida {
+public abstract class Comida {
+	protected String descripcion;
+	protected double precio;
 
-	void verDetalle();
+	public Comida(double precio, String descripcion) {
+		this.precio = precio;
+		this.descripcion = descripcion;
+	}
 
-	double calcularCosto();
+	public String obtenerDescripcion() {
+		return descripcion;
+	}
 
+	public double calcularPrecio() {
+		return precio;
+	}
 }

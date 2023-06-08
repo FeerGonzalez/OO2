@@ -1,28 +1,21 @@
 package eje3;
 
-public class Tomate implements Comida {
-	private double precio;
-	private Comida comida;
+public class Tomate extends Comida {
+	private Comida extra;
 
-	public Tomate(double precio, Comida comida) {
-		this.precio = precio;
-		this.comida = comida;
+	public Tomate(double precio, Comida extra) {
+		super(precio, "Con Tomate");
+		this.extra = extra;
 	}
 
 	@Override
-	public void verDetalle() {
-		if (this.comida != null) {
-			this.comida.verDetalle();
-		}
-		System.out.println("Es Tomate: $" + this.precio);
+	public String obtenerDescripcion() {
+		return extra.obtenerDescripcion() + "\n" + this.descripcion;
 	}
 
 	@Override
-	public double calcularCosto() {
-		double costo = 0;
-		if (this.comida != null) {
-			costo = this.comida.calcularCosto();
-		}
-		return this.precio + costo;
+	public double calcularPrecio() {
+		return this.precio + extra.calcularPrecio();
 	}
+
 }

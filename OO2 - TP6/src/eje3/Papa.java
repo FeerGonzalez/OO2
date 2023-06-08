@@ -1,28 +1,20 @@
 package eje3;
 
-public class Papa implements Comida {
-	private double precio;
-	private Comida comida;
+public class Papa extends Comida {
+	private Comida extra;
 
-	public Papa(double precio, Comida comida) {
-		this.precio = precio;
-		this.comida = comida;
+	public Papa(double precio, Comida extra) {
+		super(precio, "Con Papa");
+		this.extra = extra;
 	}
 
 	@Override
-	public void verDetalle() {
-		if (this.comida != null) {
-			this.comida.verDetalle();
-		}
-		System.out.println("Es Papa: $" + this.precio);
+	public String obtenerDescripcion() {
+		return extra.obtenerDescripcion() + "\n" + this.descripcion;
 	}
 
 	@Override
-	public double calcularCosto() {
-		double costo = 0;
-		if (this.comida != null) {
-			costo = this.comida.calcularCosto();
-		}
-		return this.precio + costo;
+	public double calcularPrecio() {
+		return this.precio + extra.calcularPrecio();
 	}
 }
