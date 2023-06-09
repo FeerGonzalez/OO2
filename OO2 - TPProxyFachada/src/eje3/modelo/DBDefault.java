@@ -16,12 +16,13 @@ public class DBDefault implements DBFacade {
 	private String user;
 	private String password;
 	private Connection conexion;
+	private boolean estadoConexion;
 
 	public DBDefault(String url, String user, String password) {
 		this.url = url;
 		this.user = user;
 		this.password = password;
-		this.conexion = null;
+		this.estadoConexion = false;
 	}
 
 	@Override
@@ -92,7 +93,7 @@ public class DBDefault implements DBFacade {
 	@Override
 	public void close() {
 		try {
-			if (!conexionAbierta()) {
+			if (conexionAbierta()) {
 				throw new RuntimeException("La conexion a la base de datos se encuentra cerrada");
 			}
 
@@ -103,13 +104,10 @@ public class DBDefault implements DBFacade {
 	}
 
 	private boolean conexionAbierta() {
-		try {
-			if (this.conexion.isClosed()) {
-				return false;
-			}
-		} catch (SQLException e) {
-
+		if (!this.estadoConexion) {
+			return false;
 		}
+
 		return true;
 	}
 
