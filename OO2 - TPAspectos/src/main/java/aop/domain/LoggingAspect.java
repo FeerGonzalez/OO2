@@ -1,4 +1,4 @@
-package main.java.aop.domain;
+package aop.domain;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -23,7 +23,7 @@ public class LoggingAspect {
 		var param = point.getArgs()[0];
 		System.out.println("filtro de busqueda: " + param);
 	}
-
+	
 	@AfterThrowing(value = "execution(* aop.domain..*(..))", throwing = "error")
 	public void afterThrowing(JoinPoint jp, Throwable error) {
 		System.out.println("after throwing: " + error.getMessage());
@@ -36,7 +36,7 @@ public class LoggingAspect {
 		var value = point.proceed();
 
 		System.out.println("around after...");
-
+		
 		return value;
 	}
 }

@@ -1,4 +1,4 @@
-package main.java.aop.db;
+package aop.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,11 +8,11 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import main.java.aop.domain.Time;
+import aop.domain.Time;
 
 @Component
 public class RegistrarUser {
-	private String jdbcUrl = "jdbc:mysql://localhost:3306/tpaspectos-oo2"; // Buscar la forma de inyectar dependencia
+	private String jdbcUrl = "jdbc:mysql://localhost:3306/tpaspectos_oo2"; // Buscar la forma de inyectar dependencia
 	private String username = "root";
 	private String password = "";
 
@@ -23,7 +23,7 @@ public class RegistrarUser {
 						PreparedStatement.RETURN_GENERATED_KEYS)) {
 
 			for (String nombre : nombres) {
-				statement.setString(2, nombre);
+				statement.setString(1, nombre);
 				statement.executeUpdate();
 			}
 

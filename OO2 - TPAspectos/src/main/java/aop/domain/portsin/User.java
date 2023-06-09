@@ -1,4 +1,4 @@
-package main.java.aop.domain.portsin;
+package aop.domain.portsin;
 
 public record User(Integer id, String userName) {
 

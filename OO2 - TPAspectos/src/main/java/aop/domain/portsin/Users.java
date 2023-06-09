@@ -1,4 +1,4 @@
-package main.java.aop.domain.portsin;
+package aop.domain.portsin;
 
 import java.util.List;
 

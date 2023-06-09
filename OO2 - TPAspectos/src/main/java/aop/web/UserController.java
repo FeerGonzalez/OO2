@@ -1,14 +1,13 @@
-package main.java.aop.web;
+package aop.web;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import main.java.aop.db.RegistrarUser;
+import aop.db.RegistrarUser;
 
 @RestController
 public class UserController {
@@ -43,14 +42,14 @@ public class UserController {
 		this.registrar = formaDeRegistro;
 	}
 
-	@GetMapping("/users/insertar/cinco")
-	public void insertarCincoUsuarios(@PathVariable int cantidad) {
-		insertarUsuarios(cantidad);
+	@GetMapping("/users/insertar/diez")
+	public void insertarCincoUsuarios() {
+		insertarUsuarios(10);
 	}
 
 	@GetMapping("/users/insertar/cien")
-	public void insertarCienUsuarios(@PathVariable int cantidad) {
-		insertarUsuarios(cantidad);
+	public void insertarCienUsuarios() {
+		insertarUsuarios(100);
 	}
 
 	private void insertarUsuarios(int cantidadUsuarios) {
