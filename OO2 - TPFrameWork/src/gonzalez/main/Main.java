@@ -6,7 +6,7 @@ import gonzalez.framework.FrameWork;
 public class Main {
 
 	public static void main(String[] args) {
-		FrameWork frame = new FrameWork(new ArchivoCargarDatos("/acciones.properties"));
+		FrameWork frame = new FrameWork(new ArchivoCargarDatos("/acciones.json"));
 		frame.start();
 	}
 
