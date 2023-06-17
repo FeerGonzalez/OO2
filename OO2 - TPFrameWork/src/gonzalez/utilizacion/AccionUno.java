@@ -16,7 +16,7 @@ public class AccionUno implements Accion {
 
 	@Override
 	public String descripcionItemMenu() {
-		return "Mostrar Opcion1";
+		return "Mostrar Opcion 1";
 	}
 
 }

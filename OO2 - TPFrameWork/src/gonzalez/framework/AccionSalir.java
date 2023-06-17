@@ -9,7 +9,7 @@ public class AccionSalir implements Accion {
 
 	@Override
 	public String nombreItemMenu() {
-		return "Accion Salir";
+		return "Salir";
 	}
 
 	@Override

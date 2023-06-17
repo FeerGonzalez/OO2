@@ -26,17 +26,18 @@ public class ArchivoCargarDatos implements CargarAcciones {
 		HashMap<Integer, Accion> lista = new HashMap<>();
 
 		try (InputStream config = getClass().getResourceAsStream(this.path);) {
-
 			properties.load(config);
 
 			String archivo = properties.getProperty("acciones");
 
 			String[] clases = archivo.split("; ");
 
+			int i = 0;
+
 			for (String string : clases) {
 				Accion nuevaAccion = (Accion) Class.forName(string).getDeclaredConstructor().newInstance();
-
-				lista.put(Integer.parseInt(nuevaAccion.descripcionItemMenu()), nuevaAccion);
+				lista.put(i, nuevaAccion);
+				i++;
 			}
 
 		} catch (IOException | InstantiationException | IllegalAccessException | ClassNotFoundException

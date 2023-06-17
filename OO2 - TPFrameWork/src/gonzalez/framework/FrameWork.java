@@ -14,17 +14,18 @@ public class FrameWork {
 
 	public void start() {
 		llenarListaAcciones();
-		agregarOpcionSalir();
 		menu();
 	}
 
 	private void menu() {
 		System.out.println("Bienvenido, ¿Que desea hacer?");
-
-		for (int i = 0; i < listaAcciones.size(); i++) {
-			System.out
-					.println(listaAcciones.get(i).nombreItemMenu() + " " + listaAcciones.get(i).descripcionItemMenu());
+		int i;
+		for (i = 0; i < listaAcciones.size(); i++) {
+			System.out.println(i + 1 + ". " + listaAcciones.get(i).nombreItemMenu() + " ("
+					+ listaAcciones.get(i).descripcionItemMenu() + ")");
 		}
+
+		agregarOpcionSalir(i + 1);
 
 	}
 
@@ -32,8 +33,10 @@ public class FrameWork {
 		this.listaAcciones = acciones.cargar();
 	}
 
-	private void agregarOpcionSalir() {
-		listaAcciones.put(listaAcciones.size() + 1, new AccionSalir());
+	private void agregarOpcionSalir(int opcion) {
+		AccionSalir opcionSalir = new AccionSalir();
+		System.out.println(opcion + ". " + opcionSalir.nombreItemMenu());
+		listaAcciones.put(listaAcciones.size(), new AccionSalir());
 	}
 
 }
