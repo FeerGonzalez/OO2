@@ -49,6 +49,4 @@ public class Pantalla {
 		window.setComponent(panel);
 		textGUI.addWindowAndWait(window);
 	}
-
-//	private 
 }

@@ -1,5 +1,6 @@
 package gonzalez.framework;
 
+import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,7 +11,10 @@ import java.util.Properties;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonIOException;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 
 public class ArchivoCargarDatos implements CargarAcciones {
@@ -43,18 +47,24 @@ public class ArchivoCargarDatos implements CargarAcciones {
 
 	private HashMap<Integer, Accion> cargarConFormatoJson() {
 		HashMap<Integer, Accion> lista = new HashMap<>();
-		System.out.println("Entro");
 		Gson gson = new GsonBuilder().create();
-
 		int i = 0;
-		try (FileReader reader = new FileReader(this.path)) {
-			System.out.println("Entro2");
-			lista.put(i, gson.fromJson(reader, Accion.class));
-			i++;
-		} catch (IOException | JsonSyntaxException | JsonIOException e) {
-			System.out.println(e.getMessage());
-		}
 
+		try (BufferedReader reader = new BufferedReader(new FileReader(this.path))) {
+			JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
+			JsonArray jsonArray = jsonObject.getAsJsonArray("acciones");
+			for (JsonElement jsonElement : jsonArray) {
+				String clase = jsonElement.getAsString();
+				Accion nuevaAccion = (Accion) Class.forName(clase).getDeclaredConstructor().newInstance();
+				lista.put(i, nuevaAccion);
+				i++;
+			}
+		} catch (IOException | JsonSyntaxException | JsonIOException | InstantiationException | IllegalAccessException
+				| ClassNotFoundException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException
+				| SecurityException e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
 		return lista;
 	}
 
