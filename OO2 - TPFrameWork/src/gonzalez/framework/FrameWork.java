@@ -10,9 +10,9 @@ public class FrameWork {
 	private Pantalla pantalla;
 	private HashMap<Integer, Accion> listaAcciones;
 
-	public FrameWork(CargarAcciones acciones) {
-		Objects.requireNonNull(acciones);
-		this.acciones = acciones;
+	public FrameWork(String path) {
+		Objects.requireNonNull(path);
+		this.acciones = new ArchivoCargarDatos(path);
 	}
 
 	public void start() {
@@ -29,7 +29,7 @@ public class FrameWork {
 //		}
 
 		agregarOpcionSalir(this.listaAcciones.size() + 1);
-		this.pantalla = new Pantalla(convertirALista());
+		this.pantalla = new Pantalla(convertirALista(), obtenerHilos());
 		this.pantalla.mostrar();
 	}
 
@@ -51,6 +51,10 @@ public class FrameWork {
 		}
 
 		return lista;
+	}
+
+	private int obtenerHilos() {
+		return acciones.devolverCantidadThreads();
 	}
 
 }

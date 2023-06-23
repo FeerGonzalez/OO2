@@ -1,3 +1,4 @@
 {
-"acciones": ["gonzalez.utilizacion.AccionUno", "gonzalez.utilizacion.AccionDos"]
+"acciones": ["gonzalez.utilizacion.AccionUno", "gonzalez.utilizacion.AccionDos"],
+"max-threads": 2
 }

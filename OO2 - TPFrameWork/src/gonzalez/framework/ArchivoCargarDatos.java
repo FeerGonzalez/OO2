@@ -50,6 +50,7 @@ public class ArchivoCargarDatos implements CargarAcciones {
 		Gson gson = new GsonBuilder().create();
 		int i = 0;
 
+//		try (InputStream config = getClass().getResourceAsStream(this.path)) {
 		try (BufferedReader reader = new BufferedReader(new FileReader(this.path))) {
 			JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
 			JsonArray jsonArray = jsonObject.getAsJsonArray("acciones");
@@ -94,5 +95,19 @@ public class ArchivoCargarDatos implements CargarAcciones {
 		}
 
 		return lista;
+	}
+
+	@Override
+	public int devolverCantidadThreads() {
+		int threads = 1;
+		Gson gson = new GsonBuilder().create();
+		try (BufferedReader reader = new BufferedReader(new FileReader(this.path))) {
+			JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
+			threads = jsonObject.get("max-threads").getAsInt();
+		} catch (IOException | JsonSyntaxException | JsonIOException | IllegalArgumentException | SecurityException e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+		return threads;
 	}
 }
