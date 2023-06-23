@@ -65,17 +65,9 @@ public class Pantalla {
 				}
 
 				try {
-					if (maxthreads == 1) {
-						for (Callable<AdapterEjecutar> callable : accionesSelecionadas) {
-							callable.call();
-						}
-					} else {
-						ExecutorService executor = Executors.newFixedThreadPool(maxthreads);
-
-						executor.invokeAll(accionesSelecionadas);
-
-						executor.shutdown();
-					}
+					ExecutorService executor = Executors.newFixedThreadPool(maxthreads);
+					executor.invokeAll(accionesSelecionadas);
+					executor.shutdown();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
