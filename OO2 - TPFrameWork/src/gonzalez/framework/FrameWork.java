@@ -27,7 +27,6 @@ public class FrameWork {
 //			System.out.println(i + 1 + ". " + listaAcciones.get(i).nombreItemMenu() + " ("
 //					+ listaAcciones.get(i).descripcionItemMenu() + ")");
 //		}
-
 		agregarOpcionSalir(this.listaAcciones.size() + 1);
 		this.pantalla = new Pantalla(convertirALista(), obtenerHilos());
 		this.pantalla.mostrar();
@@ -54,7 +53,10 @@ public class FrameWork {
 	}
 
 	private int obtenerHilos() {
-		return acciones.devolverCantidadThreads();
+		if (acciones.esJson()) {
+			return acciones.devolverCantidadThreads();
+		}
+		return 1;
 	}
 
 }

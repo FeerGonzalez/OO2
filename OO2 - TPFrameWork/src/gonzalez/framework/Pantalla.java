@@ -43,15 +43,7 @@ public class Pantalla {
 
 		Panel panel = new Panel();
 		for (Accion accion : listaAcciones) {
-
 			panel.addComponent(new CheckBox(accion.nombreItemMenu()));
-//			panel.addComponent(new Button(accion.nombreItemMenu(), new Runnable() {
-//				@Override
-//				public void run() {
-//					accion.ejecutar();
-//				}
-//			}));
-
 			panel.addComponent(new Label(accion.descripcionItemMenu())).setLayoutData(
 					GridLayout.createLayoutData(GridLayout.Alignment.BEGINNING, GridLayout.Alignment.END));
 		}
@@ -65,7 +57,6 @@ public class Pantalla {
 						CheckBox check = (CheckBox) component;
 
 						if (check.isChecked()) {
-							// se crea un adaptador de la accion y se agrega a la lista
 							Callable<AdapterEjecutar> callable = new AdapterEjecutar(listaAcciones.get(i));
 							accionesSelecionadas.add(callable);
 						}
@@ -74,7 +65,7 @@ public class Pantalla {
 				}
 
 				try {
-					if (maxthreads == -1) {
+					if (maxthreads == 1) {
 						for (Callable<AdapterEjecutar> callable : accionesSelecionadas) {
 							callable.call();
 						}
@@ -91,37 +82,6 @@ public class Pantalla {
 			}
 
 		}));
-
-//		panel.addComponent(new Button("Confirmar", new Runnable() {
-//			public void run() {
-//
-//				List<Callable<AdapterRun>> listaAccionesSeleccionadas = new ArrayList<Callable<AdapterRun>>();
-//
-//				int i = 0;
-//				for (Component component : panel.getChildren()) {
-//					if (component instanceof CheckBox) {
-//						CheckBox check = (CheckBox) component;
-//						if (check.isChecked()) {
-//							Callable<AdapterRun> accionAdapter = new AdapterRun(listaAcciones.get(i));
-//							listaAccionesSeleccionadas.add(accionAdapter);
-//						}
-//						i++;
-//					}
-//				}
-//
-//				ExecutorService executor = Executors.newFixedThreadPool(1);
-//
-//				try {
-//					executor.invokeAll(listaAccionesSeleccionadas);
-//				} catch (InterruptedException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//
-//				executor.shutdown();
-//
-//			}
-//		}));
 
 		window.setComponent(panel);
 		textGUI.addWindowAndWait(window);
